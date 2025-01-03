@@ -1,0 +1,125 @@
+﻿@page "/passenger/flights/{passengerId}"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.Flights.TripDetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @LF["flight-details"];
+}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h3 class="text-center font-weight-bold">
+            @Model.Passenger?.Flight.FlightNumber
+            , @Model.Passenger?.Flight.FlightRoute.Airline.Name
+        </h3>
+    </div>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p class="font-weight-light">@L["passenger"]</p>
+                <h5>@(Model.Passenger?.Person.FirstName + " " + Model.Passenger?.Person.LastName)</h5>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p class="font-weight-light">@LF["departure"]</p>
+                <h5>@Arabic.ConvertToArabicDigitsByCulture(Model.Passenger!.Flight.DepartureDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</h5>
+            </div>
+            <div class="col-sm">
+                <p class="font-weight-light">@LF["arrival"]</p>
+                <h5>@Arabic.ConvertToArabicDigitsByCulture(Model.Passenger!.Flight.ArrivalDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</h5>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p class="font-weight-light">@L["from"]</p>
+                <h5>@Model.Passenger?.Flight.FlightRoute.DepartureAirport </h5>
+            </div>
+            <div class="col-sm">
+                <p class="font-weight-light">@L["to"]</p>
+                <h5>@Model.Passenger?.Flight.FlightRoute.ArrivalAirport </h5>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <p class="font-weight-light">@LS["purchased-services"]
+                @if (Model.Passenger != null && Model.Passenger.PassengerAmenitySelections.Any(a => a.Confirmed == 1 && a.ObjectStatus == 1))
+                {
+                    <ul class="list-group">
+                        @foreach (var amenity in Model.Passenger.PassengerAmenitySelections.Where(amenity => amenity.Confirmed == 1 && amenity.ObjectStatus == 1))
+                        {
+                            <li class="list-group-item">@amenity.RouteAmenity.Amenity.Name</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>@LS["no-purchased-amenities"].</p>
+                }
+
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-3">
+                <a href="/passenger/@Hash.EncodeInt(Model.Passenger!.Id)/flights/@Hash.EncodeInt(Model.Passenger!.Flight.FlightRouteId)/services"
+                   id="AddServicesButton" class="btn blue-button w-100">
+                    @LS["add-service"]
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <form id="form-@Hash.EncodeInt(Model.Passenger!.Flight.Id)" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Hash.EncodeInt(Model.Passenger!.Flight.Id)"/>
+                    <button type="button" class="btn button-danger w-100 delete-button" title="Cancel flight"
+                            data-form-id="form-@Hash.EncodeInt(Model.Passenger!.Flight.Id)" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        @LF["cancel-flight"]
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="/passenger/flights/upcoming-flights" class="btn btn-secondary w-100">
+                    @LF["back-to-flights"]
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@L["confirm"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @LF["cancel-flight-confirmation"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@L["cancel"]</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">@L["confirm"]</button>
+            </div>
+        </div>
+    </div>
+</div>

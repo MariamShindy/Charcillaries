@@ -1,0 +1,194 @@
+﻿@page
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.Flights.UpcomingFlightsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @LF["upcoming-flights"];
+}
+
+@section Styles
+{
+    <style>
+    .inner-list {
+        list-style-type: '— ';
+    }
+
+    #caretIcon {
+        transition: transform 0.3s ease;
+    }
+
+    [aria-expanded="true"] #caretIcon {
+        transform: rotate(180deg);
+    }
+
+</style>
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h3>@LF["upcoming-flights"]</h3>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            @L["sort-by"]
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="?sort=dateAsc">@L["date-ascending"]</a>
+            <a class="dropdown-item" href="?sort=dateDes">@L["date-descending"]</a>
+            <a class="dropdown-item" href="?sort=destinationAsc">@L["destination-a-z"]</a>
+            <a class="dropdown-item" href="?sort=destinationDes">@L["destination-z-a"]</a>
+        </div>
+    </div>
+    <br/>
+
+    <div class="row" id="flights">
+        @if (Model.Passengers.Any())
+        {
+            @foreach (var passenger in Model.Passengers)
+            {
+                var passengerId = Hash.EncodeInt(passenger.Id);
+                <div class="col-12 mb-4">
+                    <div class="card h-100 card-silver shadow-sm">
+                        <div class="card-header fs-5 fw-bold blue-text">
+                            @LF["flight"] @passenger.Flight.FlightNumber, @passenger.Flight.FlightRoute.Airline.Name
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                <div>
+                                    <p class="card-text">
+                                        <strong>
+                                            @LF["from"]
+                                            :
+                                        </strong>@passenger.Flight.FlightRoute.DepartureAirport
+                                        <strong>
+                                            || @LF["to"]
+                                            :
+                                        </strong>@passenger.Flight.FlightRoute.ArrivalAirport
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>
+                                            @LF["departure"]
+                                            :
+                                        </strong>@Arabic.ConvertToArabicDigitsByCulture(passenger.Flight.DepartureDate.ToString("h:mm tt"), CultureInfo.CurrentCulture.Name)
+                                        <strong>
+                                            @LF["arrival"]
+                                            :
+                                        </strong>@Arabic.ConvertToArabicDigitsByCulture(passenger.Flight.ArrivalDate.ToString("h:mm tt"), CultureInfo.CurrentCulture.Name)
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>
+                                            @L["date"]
+                                            :
+                                        </strong> @Arabic.ConvertToArabicDigitsByCulture(passenger.Flight.DepartureDate.ToString("dd/MM/yyyy"), CultureInfo.CurrentCulture.Name)
+                                    </p>
+                                </div>
+                                <div class="d-flex flex-column mt-3 mt-md-0">
+                                    <a href="/passenger/flights/@passengerId" class="btn blue-button mb-2">
+                                        @LF["flight-details"]
+                                    </a>
+                                    <a href="/passenger/@passengerId/flights/@Hash.EncodeInt(passenger.Flight.FlightRoute.Id)/services"
+                                       class="btn blue-button">
+                                        @LS["browse-services"]
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>@LF["no-flights-available"].</p>
+        }
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn button btn-primary" data-bs-toggle="collapse" data-bs-target="#selfAssignCollapse">
+            @LF["cannot-find-your-flight-?"]
+        </button>
+    </div>
+    <div class="collapse fade" id="selfAssignCollapse" aria-labelledby="selfAssignCollapseLabel" aria-hidden="true">
+        <hr/>
+        <h4 class="mt-3">@LF["search-for-your-flight"]</h4>
+        <form class="mb-4" hx-post hx-page-handler="FlightNumber" hx-target="#flight-by-number">
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(m => m.FlightNumber, LF["flight-number"], new { @class = "form-label" })
+            <input class="form-control" type="text" asp-for="FlightNumber"/>
+            <span id="flight-number-validation" asp-validation-for="FlightNumber"
+                  class="text-danger">
+            </span>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn button mt-2 btn-primary">@L["search"]</button>
+            </div>
+        </form>
+        <div id="flight-by-number" class="row"></div>
+        <hr/>
+
+        <form hx-post hx-page-handler="FlightDate" hx-target="#flight-by-date">
+            @Html.AntiForgeryToken()
+            <div>
+                @Html.LabelFor(m => m.TourOperatorId, LT["tour-operator"], new { @class = "form-label" })
+                <select class="form-select mb-3 overflow-y-scroll" asp-for="TourOperatorId"
+                        aria-label="Large select example">
+                    <option selected disabled>@L["select"]</option>
+                    @foreach (var tourOperator in Model.TourOperators)
+                    {
+                        <option value="@Hash.EncodeInt(tourOperator.Id)">@tourOperator.Name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                @Html.LabelFor(m => m.DepartureDate, L["departure-date"], new { @class = "form-label" })
+                <input lang="ar" class="form-control text-start " type="date" asp-for="DepartureDate"/>
+                <span id="departure-date-validation" asp-validation-for="DepartureDate"
+                      class="text-danger">
+                </span>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn button mt-2 btn-primary">@L["search"]</button>
+            </div>
+        </form>
+
+        <div id="flight-by-date" class="row my-5"></div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('htmx:afterSwap', function (event) {
+        if (event.detail.target.id === 'flights' && event.detail.xhr.status === 200) {
+            const collapse = document.getElementById('selfAssignCollapse');
+            bootstrap.Collapse.getInstance(collapse).hide();
+
+            //wait for the modal to close
+            setTimeout(() => {
+                collapse.querySelector('form').reset();
+                window.scrollTo(0, 0);
+            }, 500);
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const collapse = document.getElementById('selfAssignCollapse');
+
+        // scroll to the bottom of the page
+        if (collapse) {
+            collapse.addEventListener('shown.bs.collapse', function () {
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        }
+    });
+</script>

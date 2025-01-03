@@ -1,0 +1,30 @@
+﻿@page "/admin/tour-operators/{tourOperatorId}"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.TourOperators.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = $"{LT["tour-operator"]} {Model.TourOperator?.Name}";
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h3 class="mb-3">@LT["tour-operator-details"]</h3>
+
+    <div class="w-50">
+        <div class="mb-3">
+            <strong>@L["name"]</strong>
+            <p class="border rounded p-2">@Model.TourOperator?.Name</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["contact-information"]</strong>
+            <p class="border rounded p-2" dir="ltr">@Model.TourOperator?.ContactInfo</p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="/admin/tour-operators" class="btn button mt-4">@LT["back-to-tour-operators"]</a>
+        </div>
+    </div>
+</div>

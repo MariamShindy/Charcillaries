@@ -1,0 +1,57 @@
+﻿@page "/airline/routes/{routeId}/edit"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.EditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = LA["edit-route"];
+}
+<div class="container mt-5">
+    <h3 class="mb-4 text-center">@LA["edit-route"]</h3>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!-- Airports -->
+        <div class="row mb-4">
+            <div class="col-lg-6 mb-3">
+                <i class="fa-solid fa-plane-departure me-3"></i>
+                <label class="form-label">@L["departure-airport"]</label>
+                <select class="form-select" aria-label="Select departure airport" asp-for="Route.DepartureAirport">
+                    <option selected>@Model.RouteDetails!.DepartureAirport</option>
+                    @foreach (var airport in Model.Airports)
+                    {
+                        <option>@airport</option>
+                    }
+                </select>
+                <span asp-validation-for="Route.DepartureAirport" class="text-danger"></span> <!-- This is the validation message -->
+            </div>
+            <div class="col-lg-6 mb-3">
+                <i class="fa-solid fa-plane-arrival me-3"></i>
+                <label class="form-label">@L["arrival-airport"]</label>
+                <select class="form-select" aria-label="Select arrival airport" asp-for="Route.ArrivalAirport">
+                    <option selected>@Model.RouteDetails!.ArrivalAirport</option>
+                    @foreach (var airport in Model.Airports)
+                    {
+                        <option>@airport</option>
+                    }
+                </select>
+                <span asp-validation-for="Route.ArrivalAirport" class="text-danger"></span> <!-- This is the validation message -->
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">@LA["save-route"]</button>
+            <a href="/airline/routes/enabled" class="btn btn-secondary ms-2">@L["cancel"]</a>
+        </div>
+    </form>
+</div>

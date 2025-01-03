@@ -1,0 +1,250 @@
+﻿@page
+@using System.Globalization
+@using Charcillaries.Core
+@using Microsoft.Extensions.Localization
+
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@model Charcillaries.Web.Pages.Index;
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@inject IStringLocalizer<Global> L
+
+
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentCulture.Name"
+      dir="@(CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Charcillaries</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <link href="~/LandingPage/img/logo.png" rel="icon">
+    <link href="~/LandingPage/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link href="~/LandingPage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/LandingPage/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/LandingPage/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/LandingPage/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/LandingPage/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/LandingPage/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <link href="~/LandingPage/css/main.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flag-icon-css@4.1.7/css/flag-icons.min.css" rel="stylesheet">
+    <style>
+        /* Custom responsive classes for text color */
+@@media (min-width: 992px) { /* Large screens (≥992px) */
+    .text-lg-white {
+        color: white !important;
+    }
+}
+@@media (max-width: 991.98px) { /* Small and medium screens (<992px) */
+    .text-sm-black {
+        color: black !important;
+    }
+}
+
+    </style>
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="/Index" class="logo d-flex align-items-center">
+                <img src="~/LandingPage/img/logo.png" alt="">
+                <h1 class="sitename me-3">Charcillaries</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#hero" class="nav-link active">@L["home"]</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">@L["contact-us"]</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link">@L["login"]</a></li>
+                    <li class="nav-item ms-3 me-3">
+                        <form id="cultureForm" method="post" action="/change-culture?returnUrl=@(ViewContext.HttpContext.Request.Path + ViewContext.HttpContext.Request.QueryString)" class="d-flex align-items-center">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="culture" value="@(CultureInfo.CurrentCulture.Name == "ar" ? "en" : "ar")" />
+
+                            <button type="submit" class="btn btn-link p-0 text-decoration-none text-lg-white text-sm-black" style="font-size: 1rem;">
+                                @(CultureInfo.CurrentCulture.Name == "ar" ? "التبديل إلى الإنجليزية" : "Switch to Arabic")
+                                <i class="flag-icon flag-icon-@(CultureInfo.CurrentCulture.Name == "ar" ? "gb" : "eg")"></i>
+                            </button>
+                        </form>
+
+                    </li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+
+        </div>
+    </header>
+
+    <main class="main">
+
+        <section id="hero" class="hero section dark-background">
+
+            <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">@L["welcome-to"] <span>Charcillaries</span></h2>
+                        <p class="animate__animated animate__fadeInUp fs-5">@L["index-description"]</p>
+                        <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">@L["lets-start"]</a>
+                    </div>
+                </div>
+            </div>
+
+            <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+                </defs>
+                <g class="wave1">
+                    <use xlink:href="#wave-path" x="50" y="3"></use>
+                </g>
+                <g class="wave2">
+                    <use xlink:href="#wave-path" x="50" y="0"></use>
+                </g>
+                <g class="wave3">
+                    <use xlink:href="#wave-path" x="50" y="9"></use>
+                </g>
+            </svg>
+        </section>
+
+
+
+        <section id="contact" class="contact section">
+            <div class="container section-title" data-aos="fade-up">
+                <h2>@L["contact-us"]</h2>
+                <p>@L["contact-us-decription"]</p>
+            </div>
+
+            <div class="container" data-aos="fade" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-4">
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                            <i class="bi bi-geo-alt flex-shrink-0 ms-3"></i>
+                            <div>
+                                <h3>@L["address"]</h3>
+                                <p>@L["address-description"]</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-telephone flex-shrink-0 ms-3"></i>
+                            <div>
+                                <h3>@L["call-us"]</h3>
+                                <p>+20 233366187</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-envelope flex-shrink-0 ms-3"></i>
+                            <div>
+                                <h3>@L["email-us"]</h3>
+                                <p>egypt@silverkeytech.com</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                            @Html.AntiForgeryToken()
+                            <div class="row gy-4">
+
+                                <div class="col-md-6">
+                                    <input type="text" asp-for="ContactForm.Name" class="form-control" placeholder=@L["your-name"] required="">
+                                </div>
+
+                                <div class="col-md-6 ">
+                                    <input type="email" class="form-control" asp-for="ContactForm.Email" placeholder=@L["your-email"] required="">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" asp-for="ContactForm.Subject" placeholder=@L["subject"] required="">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" asp-for="ContactForm.Message" rows="6" placeholder=@L["message"] required=""></textarea>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button type="submit">@L["send-message"]</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer id="footer" class="footer light-background">
+        <div class="container">
+            <div class="social-links d-flex justify-content-center">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-skype"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <span>@L["copy-right"]</span> <strong class="px-1 sitename">Charcillaries </strong> <span>@L["all-rights-reserved"]</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/LandingPage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+    <script src="~/LandingPage/vendor/aos/aos.js"></script>
+    <script src="~/LandingPage/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/LandingPage/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/LandingPage/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function submitForm() {
+            document.getElementById('cultureForm').submit();
+        }
+
+        $(document).ready(function () {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    toastr.success("@TempData["SuccessMessage"]");
+            </text>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <text>
+                    toastr.error("@TempData["ErrorMessage"]");
+            </text>
+        }
+            });
+    </script>
+</body>
+
+
+</html>

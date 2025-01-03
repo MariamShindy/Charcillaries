@@ -1,0 +1,216 @@
+﻿@page "/airline/flights/{flightId}"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Flights.DetailsModel
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+
+@{
+	Layout = "_AirlineLayout";
+	ViewData["Title"] = @LF["flight-details"];
+}
+
+@section Styles
+{
+	<style>
+		.inner-list {
+			list-style-type: '— ';
+		}
+
+		#caretIcon {
+			transition: transform 0.3s ease;
+		}
+
+		[aria-expanded="true"] #caretIcon {
+			transform: rotate(180deg);
+		}
+
+	</style>
+}
+
+<div class="container mt-5">
+	<div class="row h-100">
+		<div class="col col-12 col-md-8">
+			<div class="d-flex justify-content-between">
+				<h1>@LF["flight"] @Model.FlightPassengersList!.FlightNumber</h1>
+				<div class="d-flex flex-column align-items-end">
+					<h3>@Model.FlightPassengersList!.TourOperator.Name</h3>
+					<p dir="ltr">@Model.FlightPassengersList!.TourOperator.ContactInfo</p>
+				</div>
+			</div>
+			<button class="btn button d-md-none" data-bs-toggle="offcanvas"
+					data-bs-target="#routeSummaryOffcanvas">
+				@LF["flight-details"]
+			</button>
+			<div class="d-flex justify-content-between">
+				<h3>@LP["passengers"]</h3>
+
+				<button class="btn" id="filterButton" data-bs-toggle="collapse" data-bs-target="#collapseFilter"
+						aria-expanded="false" aria-controls="collapseFilter">
+					@L["filters"]
+					<i class="fa-solid fa-caret-down" id="caretIcon"></i>
+				</button>
+			</div>
+			<form class="collapse" id="collapseFilter">
+				<div class="d-flex flex-wrap align-items-end">
+					<div class="me-2">
+						<label for="" class="form-label">@L["first-name"]</label>
+						<input type="text" class="form-control" name="FirstName" id="firstName" value="@Model.FirstName" placeholder=@L["name"]>
+					</div>
+					<div class="me-2">
+						<label for="" class="form-label">@L["last-name"]</label>
+						<input type="text" class="form-control" name="LastName" id="lastName" value="@Model.LastName" placeholder=@L["name"]>
+					</div>
+					<div class="form-check me-3">
+						<label class="form-check-label" for="paid">
+							@L["is-paid"]
+						</label>
+						<input class="form-check-input" type="checkbox" value="true" name="IsPaid" id="paid" @(Model.IsPaid ? "checked" : "")>
+					</div>
+					<button type="submit" name="action" value="apply" class="btn blue-button me-3">@L["apply-filters"]</button>
+					<button type="submit" name="action" value="clear" class="btn red-button">@L["clear-filters"]</button>
+
+				</div>
+			</form>
+
+			@foreach (var passenger in Model.FilteredPassengers)
+			{
+				<div class="p-3 rounded-3 d-flex flex-column mt-4" style="background: #eeeeee">
+					<div class="d-flex align-items-center">
+						<h3 class="me-2">@passenger.Person.FirstName @passenger.Person.LastName</h3>
+						@if (passenger.PaymentConfirmation != null)
+						{
+							<i class="fa-solid fa-check" style="color: #26b050"></i>
+						}
+						else
+						{
+							<i class="fa-solid fa-x" style="color: #a33535"></i>
+						}
+					</div>
+
+					<p><span dir="ltr">@passenger.Person.PhoneNumber</span> – @passenger.Person.Email </p>
+					<div class="d-flex justify-content-between align-items-center">
+						<p class="m-0">
+							@(passenger.PassengerAmenitySelections.Count == 1
+														? $"{Arabic.ConvertToArabicDigitsByCulture(1, CultureInfo.CurrentCulture.Name)} {LS["amenity"]} {L["selected"]}"
+														: $"{Arabic.ConvertToArabicDigitsByCulture(passenger.PassengerAmenitySelections.Count, CultureInfo.CurrentCulture.Name)} {LS["amenities"]} {L["selected"]}")
+						</p>
+
+                        @if (passenger.PassengerAmenitySelections.Any())
+                        {
+                            <button class="btn" data-bs-toggle="collapse"
+                                    data-bs-target="#passenger-@Hash.EncodeInt(passenger.Id)"
+                                    aria-expanded="false" aria-controls="#passenger-@Hash.EncodeInt(passenger.Id)">
+                                @L["details"]
+                                <i class="fa-solid fa-caret-down" id="caretIcon"></i>
+                            </button>
+                        }
+                    </div>
+                    @foreach (var amenitySelections in passenger.PassengerAmenitySelections)
+                    {
+                        <div class="collapse" id="passenger-@Hash.EncodeInt(passenger.Id)">
+                            <ul class="inner-list">
+                                <li>@amenitySelections.RouteAmenity.Amenity.Name</li>
+                                <p>@amenitySelections.Customization</p>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            }
+
+
+		</div>
+		<div id="routeSummaryOffcanvas" class="col col-md-4 offcanvas-md offcanvas-end">
+			<div class="p-3 rounded-3 d-flex flex-column mt-md-0 mt-4" style="background: #ecf1f9">
+				<h3>@LF["flight-details"]</h3>
+				<ul id="routeDetails">
+					<li>
+						@LA["route-details"]:
+						<ul>
+							@await Html.PartialAsync("_FlightRouteAmenitiesDetails", Model.FlightPassengersList!)
+						</ul>
+					</li>
+					<li>
+						@L["departure"]
+						: @Arabic.ConvertToArabicDigitsByCulture(Model.FlightPassengersList!.DepartureDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)
+					</li>
+					<li>
+						@L["arrival"]
+						: @Arabic.ConvertToArabicDigitsByCulture(Model.FlightPassengersList!.ArrivalDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)
+					</li>
+				</ul>
+
+
+                @{
+                    var total = 0f;
+                    var amenityCounts = Model.FlightPassengersList!.Passengers
+                        .SelectMany(p => p.PassengerAmenitySelections)
+                        .GroupBy(p => p.RouteAmenity.AmenityId)
+                        .ToDictionary(g => g.Key, g => g.Count());
+                }
+                @if (amenityCounts.Any())
+                {
+                    <hr/>
+                    @if (CultureInfo.CurrentCulture.Name == "ar")
+                    {
+                        <h3>@L["summary"] @LS["amenities"]</h3>
+                    }
+                    else
+                    {
+                        <h3>@LS["amenities"] @L["summary"]</h3>
+                    }
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th style="background: #d8e2f3">@LS["amenity"]</th>
+                                <th style="background: #d8e2f3">@LS["quantity"]</th>
+                                <th style="background: #d8e2f3">@LS["price"] (@L["egp"])</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+                            @foreach (var routeAmenities in Model.FlightPassengersList!.FlightRoute.RouteAmenities!.Where(routeAmenities => amenityCounts.ContainsKey(routeAmenities.Amenity.Id)))
+                            {
+                                <tr>
+                                    <td style="background: #d8e2f3">@routeAmenities.Amenity.Name</td>
+                                    <td style="background: #d8e2f3">@amenityCounts[routeAmenities.Amenity.Id]</td>
+                                    <td style="background: #d8e2f3">@Arabic.ConvertToArabicDigitsByCulture((routeAmenities.Price).ToString("N2", CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</td>
+                                </tr>
+                                total += routeAmenities.Price * amenityCounts[routeAmenities.Amenity.Id];
+                            }
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-end mt-5">
+                            <h5>
+                                @L["total"]
+                                : @Arabic.ConvertToArabicDigitsByCulture(total.ToString("N2", CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name) @L["egp"]
+                            </h5>
+                        </div>
+                    </div>
+                }
+            </div>
+            <br/>
+            <button class="btn red-button d-md-none" data-bs-toggle="offcanvas"
+                    data-bs-target="#routeSummaryOffcanvas">
+                @L["cancel"]
+            </button>
+        </div>
+    </div>
+</div>

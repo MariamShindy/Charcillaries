@@ -1,0 +1,96 @@
+﻿@page "/airline/routes/{routeId}/services/disabled"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.Services.DisabledModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LS["route-services"];
+}
+
+<div class="container mt-5">
+    <div class="d-flex align-items-center w-100 flex-column">
+        <div class="card p-2">
+            <div class="card-body">
+                <h4 class="card-title text-center">@LA["route"]</h4>
+                <p class="card-text">
+                    <strong class="fs-5">
+                        <i class="fa-solid fa-plane-departure me-1"></i>
+                        <span class="me-3">@Model.Route?.DepartureAirport</span>
+                        <i class="fa-solid fa-plane-arrival me-1"></i>
+                        <span>@Model.Route?.ArrivalAirport</span>
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Services Section -->
+    <div class="mt-3">
+        <div class="dropdown mb-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                @LS["disabled-services"]
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/airline/routes/@Model.RouteId/services/enabled"> @LS["enabled-services"]</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                <tr class="">
+                    <th>@L["name"]</th>
+                    <th>@LS["price"] (@L["egp"])</th>
+                    <th>@L["actions"]</th>
+                </tr>
+                </thead>
+                <tbody class="">
+                @if (Model.RouteAmenities.Any())
+                {
+                    @foreach (var amenity in (Model.RouteAmenities))
+                    {
+                        var amenityId = Hash.EncodeInt(amenity.Id);
+                        <tr>
+                            <td>@amenity.Amenity.Name</td>
+                            <td>@Arabic.ConvertToArabicDigitsByCulture(amenity.Price.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</td>
+                            <td>
+                                <div class="btn-container">
+                                    <form id="form-@amenityId" method="post" asp-route-id="@amenityId"
+                                          class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@amenityId"/>
+                                        <button class="btn btn-link p-0 mb-2">
+                                            <i class="fa fa-toggle-off" style="font-size:28px;color:gray"></i>
+                                        </button>
+                                    </form>
+                                    <a href="/airline/routes/@Model.RouteId/services/@amenityId/edit">
+                                        <i class="fa fa-edit" style="font-size:28px;color:green"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">@LS["no-services-available"]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+﻿@page
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.TourOperators.AddModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = @LT["add-tour-operator"];
+}
+
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h1>@LT["add-tour-operator"]</h1>
+
+    <form method="post" class="w-50" enctype="application/x-www-form-urlencoded">
+        @Html.AntiForgeryToken()
+        <div>
+            <label for="name" class="form-label">@L["name"]</label>
+            <input type="text" class="form-control" id="name" asp-for="TourOperator.Name" placeholder=@L["enter-name"]>
+            <span asp-validation-for="TourOperator.Name" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div>
+            <label for="contactInfo" class="form-label">@L["contact-information"]</label>
+            <input type="text" class="form-control" id="contactInfo" asp-for="TourOperator.ContactInfo" placeholder=@L["enter-contact-info"]>
+            <span asp-validation-for="TourOperator.ContactInfo" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn button mt-4">@L["submit"]</button>
+        </div>
+    </form>
+
+</div>

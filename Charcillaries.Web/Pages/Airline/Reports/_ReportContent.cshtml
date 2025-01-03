@@ -1,0 +1,120 @@
+﻿@model List<Charcillaries.Web.Pages.Airline.Reports.IndexModel.ReportData>
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@if (Model != null && Model.Any())
+{
+	<div class="text-center mb-5">
+		<h3>@LS["top-selected-services"]</h3>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>@L["name"]</th>
+					<th>@LS["times-selected"]</th>
+					<th>@LA["number-of-routes"]</th>
+					<th>@LS["total-revenue"] @L["egp"]</th>
+					<th>@LS["service-status"]</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var report in Model)
+				{
+					<tr>
+						<td>@report.ServiceName</td>
+						<td>@report.TimesSelected</td>
+						<td>@report.Routes</td>
+						<td>@Convert.ToDecimal(report.Revenue).ToString("N2")</td>
+						<td>@report.Status</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+	<form method="post" action="?handler=ExportToExcel">
+		@Html.AntiForgeryToken()
+		<button type="submit" class="btn blue-button mt-4">@LA["export-to-excel"]</button>
+	</form>
+
+	<div class="mt-4">
+		<canvas id="servicesChart" width="300" height="400"></canvas>
+	</div>
+	@if (CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+	{
+		<script>
+			document.documentElement.dir = 'rtl';
+			document.addEventListener('htmx:afterSwap', function (event) {
+				initializeChart(true); // true indicates RTL
+			});
+		</script>
+	}
+	else
+	{
+		<script>
+			document.documentElement.dir = 'ltr';
+			document.addEventListener('htmx:afterSwap', function (event) {
+				initializeChart(false); // false indicates LTR
+			});
+		</script>
+	}
+
+	<script>
+		function initializeChart(isRTL) {
+			var canvas = document.getElementById('servicesChart');
+			if (canvas) {
+				var ctx = canvas.getContext('2d');
+				var chartData = {
+					labels: @Html.Raw(Json.Serialize(Model?.Select(x => x.ServiceName).ToList())),
+					datasets: [{
+						label: isRTL ? 'عدد المرات المختارة' : 'Times Selected',
+						data: @Html.Raw(Json.Serialize(Model?.Select(x => x.TimesSelected).ToList())),
+						backgroundColor: 'rgba(75, 192, 192, 0.2)',
+						borderColor: 'rgba(75, 192, 192, 1)',
+						borderWidth: 1,
+						barThickness: 60
+					}]
+				};
+
+				new Chart(ctx, {
+					type: 'bar',
+					data: chartData,
+					options: {
+						responsive: true,
+						maintainAspectRatio: false,
+						scales: {
+							x: {
+								beginAtZero: true,
+								reverse: isRTL // Reverse x-axis labels for RTL
+							},
+							y: {
+								beginAtZero: true,
+								position: isRTL ? 'right' : 'left', // Position the Y-axis to the right for RTL
+								ticks: {
+									stepSize: 1, // Step size to show integer values
+									callback: function (value) {
+										// Format numbers in Arabic if RTL
+										return isRTL ? value.toLocaleString('ar-EG') : value;
+									}
+								}
+							}
+						}
+					}
+				});
+			}
+		}
+	</script>
+
+
+}
+else
+{
+	<p>@L["no-data-available"]</p>
+}

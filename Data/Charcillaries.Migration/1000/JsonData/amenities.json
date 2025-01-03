@@ -1,0 +1,159 @@
+﻿{
+  "amenities": [
+    {
+      "name": "Meal",
+      "description": "In-flight meal service",
+      "icon": "049e28e0-ba3f-4458-a84f-e15bf6f33a27"
+    },
+    {
+      "name": "Entertainment",
+      "description": "In-flight entertainment",
+      "icon": "099506eb-e3fe-4c36-b587-ebb781ac7021"
+    },
+    {
+      "name": "WiFi",
+      "description": "In-flight WiFi service",
+      "icon": "82344e8f-df27-4d1a-84dd-34d0b33ee887"
+    },
+    {
+      "name": "Seat",
+      "description": "Seat selection",
+      "icon": "f2e03b23-8b45-4c82-8bc0-715c9c9de43c"
+    },
+    {
+      "name": "Baggage",
+      "description": "Baggage allowance",
+      "icon": "5924c37b-8d33-4ac3-91a5-9235ad8f4b5c"
+    },
+    {
+      "name": "Priority",
+      "description": "Priority boarding",
+      "icon": "f51029ed-480b-4afc-87fe-8f7e667f9b87"
+    },
+    {
+      "name": "Lounge",
+      "description": "Access to airport lounge",
+      "icon": "67700e6b-633f-44c0-967d-d67eee1f8039"
+    },
+    {
+      "name": "Insurance",
+      "description": "Travel insurance",
+      "icon": "a7a8de34-d3b4-4c1f-be63-f8d2e7fd5fd4"
+    },
+    {
+      "name": "Transport",
+      "description": "Airport transfer",
+      "icon": "4ab33e12-889a-4b36-8708-41a47bd2ec88"
+    },
+    {
+      "name": "Hotel",
+      "description": "Hotel accommodation",
+      "icon": "96176468-2b2d-4fa7-8726-24dceda2cff7"
+    },
+    {
+      "name": "Child care",
+      "description": "Child care service",
+      "icon": "166ae7d8-a2ff-4950-827b-0cfe296a6ca9"
+    },
+    {
+      "name": "Pet care",
+      "description": "Pet care service",
+      "icon": "5dc6395e-c60d-4ec9-bc82-360728990feb"
+    },
+    {
+      "name": "Medical",
+      "description": "Medical assistance",
+      "icon": "2833c30e-0b15-4086-9569-47b5c788e63a"
+    },
+    {
+      "name": "Special meal",
+      "description": "Special meal service",
+      "icon": "62c9216f-6900-460a-9bfd-c672ed7c0992"
+    },
+    {
+      "name": "Drinks",
+      "description": "Complimentary drinks",
+      "icon": "748bc822-c3b7-4b11-a3c9-c89647442eea"
+    },
+    {
+      "name": "Blanket",
+      "description": "Blanket service",
+      "icon": "034f01ab-5550-455a-93f3-10e4daed1e1d"
+    },
+    {
+      "name": "Pillow",
+      "description": "Pillow service",
+      "icon": "6cf05fc6-2fa9-49f8-9124-f9848d440ff4"
+    },
+    {
+      "name": "USB",
+      "description": "USB charging port",
+      "icon": "e98f3e4b-4a48-4212-98bb-33f8cab0dd0d"
+    },
+    {
+      "name": "Power",
+      "description": "Power outlet",
+      "icon": ""
+    },
+    {
+      "name": "Checked bag",
+      "description": "Free checked bag",
+      "icon": "6be07b95-d9f1-40d7-a7ba-6f26c1037bb6"
+    },
+    {
+      "name": "Personal TV",
+      "description": "Personal TV screen",
+      "icon": ""
+    },
+    {
+      "name": "Reclining seat",
+      "description": "Reclining seat",
+      "icon": "77808fdf-d806-4657-b8dd-07ac8f61ecd6"
+    },
+    {
+      "name": "Extra baggage",
+      "description": "Extra baggage allowance",
+      "icon": "d82b3403-5599-4b98-b522-fa36690aaae7"
+    },
+    {
+      "name": "Earplugs",
+      "description": "Noise reduction earplugs",
+      "icon": "6d015dfc-d831-4635-a4c0-b7f7f493eba7"
+    },
+    {
+      "name": "Travel kit",
+      "description": "Travel kit",
+      "icon": "97ea250e-3633-4fa9-8896-de82165069e3"
+    },
+    {
+      "name": "Library",
+      "description": "Onboard library",
+      "icon": "b13977c6-d211-4718-b4a1-7441ee6deea5"
+    },
+    {
+      "name": "Massage chair",
+      "description": "Massage chair service",
+      "icon": "104d5622-01c4-4aa8-b841-debc0fea5ec8"
+    },
+    {
+      "name": "Luggage handling",
+      "description": "Priority luggage handling",
+      "icon": "5a18807a-a727-42b8-b235-fa0f7f10f92c"
+    },
+    {
+      "name": "Hot towel",
+      "description": "Hot towel service",
+      "icon": "266d3a78-2e88-4f65-9af5-90920ed11fb7"
+    },
+    {
+      "name": "Dedicated attendant",
+      "description": "Dedicated attendant service",
+      "icon": ""
+    },
+    {
+      "name": "Extended recline",
+      "description": "Extended recline seat",
+      "icon": ""
+    }
+  ]
+}

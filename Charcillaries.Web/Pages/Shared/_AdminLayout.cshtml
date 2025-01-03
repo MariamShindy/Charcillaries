@@ -1,0 +1,132 @@
+﻿@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<TourOperatorLocalization> LT
+
+
+
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentCulture.Name"
+      dir="@(CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    <link href="~/Icons/logo.png" rel="icon">
+    @if (CultureInfo.CurrentCulture.TextInfo.IsRightToLeft)
+    {
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+    }
+    else
+    {
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    }
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="~/Shared/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flag-icon-css@4.1.7/css/flag-icons.min.css" rel="stylesheet">
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body>
+<div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow">
+            <div class="container-fluid">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#sidebarMenu"
+                        aria-controls="sidebarMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a class="navbar-brand title" href="#">
+                    <img class="logo" src="@Url.Content("~/Icons/logo.png")" alt="Logo">
+                    <span class="title-text fs-3">Charcillaries</span>
+                </a>
+                <div class="navbar-text d-flex">
+                    <a class="nav-link d-flex align-items-center" href="#">
+                        <i class="fas fa-user fa-lg ms-auto"></i>
+                    </a>
+
+                    <form id="cultureForm" method="post" action="/change-culture?returnUrl=@(ViewContext.HttpContext.Request.Path + ViewContext.HttpContext.Request.QueryString)" class="d-flex align-items-center">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="culture" value="@(CultureInfo.CurrentCulture.Name == "ar" ? "en" : "ar")" />
+                        <div class="form-check form-switch @(CultureInfo.CurrentCulture.Name == "ar" ? "ms-3" : "ms-3")">
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="flexSwitchCheckCulture"
+                            @(CultureInfo.CurrentCulture.Name == "ar" ? "checked" : "")
+                                   onchange="submitForm()" />
+                            <label class="form-check-label" for="flexSwitchCheckCulture">
+                                <i class="flag-icon flag-icon-@(CultureInfo.CurrentCulture.Name == "ar" ? "eg" : "eg") @(CultureInfo.CurrentCulture.Name == "ar" ? "me-4" : "me-2")"></i>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    <div class="d-flex ">
+        <!-- Sidebar -->
+        <div class="sidebar bg-light offcanvas-md offcanvas-start d-md-flex" tabindex="-1" id="sidebarMenu">
+            <ul class="nav offcanvas-body flex-column">
+                    <li>
+                        <a class="nav-link fs-1 d-flex justify-content-center" style="font-family:Brush Script MT, Brush Script Std, cursive;" href="/admin">
+                           @L["admin"]
+                        </a>
+                    </li>
+                <li>
+                    <a class="nav-link" href="/admin">
+                        <i class="fas fa-dashboard"></i> @L["dashboard"]
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/admin/passengers">
+                        <i class="fas fa-users"></i> @LP["passengers"]
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/admin/airlines">
+                        <i class="fas fa-plane"></i> @LA["airlines"]
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/admin/flights">
+                        <i class="fas fa-ticket"></i> @LF["flights"]
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/admin/tour-operators">
+                        <i class="fas fa-briefcase"></i> @LT["tour-operators"]
+                    </a>
+                </li>
+                <li>
+                    <form method="post" action="/logout">
+                        <button type="submit" class="btn nav-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            @L["logout"]
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        @RenderBody()
+
+    </div>
+</div>
+<script src="~/Shared/deleteModal.js"></script>
+    <script>
+        function submitForm() {
+            document.getElementById('cultureForm').submit();
+        }
+    </script>
+</body>
+</html>

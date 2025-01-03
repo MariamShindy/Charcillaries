@@ -1,0 +1,21 @@
+{
+  "add-passenger": "إضافة مسافر",
+  "already-assigned": "معين بالفعل",
+  "assigned-passengers": "المسافرون المعينون",
+  "back-to-passengers": "الرجوع إلي المسافرين",
+  "no-passengers-available": "لا يوجد مسافرين",
+  "passenger": "مسافر",
+  "passenger-details": "تفاصيل المسافر",
+  "passenger-flights": "رحلات المسافر",
+  "passengers": "مسافرين",
+  "total-passengers": "إجمالي المسافرين",
+  "view-passengers": "عرض المسافرين",
+  "your-cart": "سلة مشترياتك",
+  "passenger-dashboard": "لوحة تحكم المسافر",
+  "cart-empty": "سلة التسوق الخاصة بك فارغة",
+  "shop-now": "يبدو أنك لم تقم بإضافة أي شيء إلى سلة التسوق الخاصة بك بعد. ابدأ التسوق الآن!",
+  "view-upcoming-flights": "عرض الرحلات القادمة",
+  "thank-you": "شكرا لك على الشراء",
+  "transaction-success": "لقد تمت معاملتك بنجاح.",
+  "confirmation": "لقد تم إرسال بريد إلكتروني تأكيدي إليك يتضمن تفاصيل عملية الشراء الخاصة بك."
+}

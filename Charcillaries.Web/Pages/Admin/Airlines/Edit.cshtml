@@ -1,0 +1,40 @@
+﻿@page "/admin/airlines/{airlineId}/edit"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.Airlines.EditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<AirlineLocalization> LA
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = @LA["edit-airline"];
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h1>@LA["edit-airline"]</h1>
+
+    <form method="post" class="w-50" enctype="application/x-www-form-urlencoded">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label for="airlineName" class="mb-2 form-label">@L["name"]</label>
+            <input type="text" class="form-control" id="airlineName" value="@Model.AirlineDetailsView!.Name"
+                   asp-for="AirlineInput.Name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="mb-2 form-label">@L["email"]</label>
+            <input type="email" class="form-control" id="email" value="@Model.AirlineDetailsView.Email"
+                   asp-for="AirlineInput.Email">
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="mb-2 form-label">@L["contact-information"]</label>
+            <input type="tel" class="form-control" id="phoneNumber" value="@Model.AirlineDetailsView.ContactInfo"
+                   asp-for="AirlineInput.ContactInfo">
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn button mt-4">@L["edit"]</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+﻿@page "/airline/reports"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Charcillaries.Web.Pages.Airline.Reports.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LA["reports"];
+}
+ <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+    </style>
+
+<div class="container mt-5" id="reportContainer">
+    <div class="text-center mb-4">
+        <h3>@LA["generate-reports"]</h3>
+        <p class="text-muted">@LA["reports-paragraph"]</p>
+    </div>
+
+    <form hx-post hx-target="#reportContainer" hx-swap="innerHTML" class="p-4 border rounded" style="background-color: #f8f9fa;">
+        @Html.AntiForgeryToken()
+        <!-- Services Section -->
+        <div class="card-container">
+            <button type="submit" name="ReportType" value="TopSelectedServices" class="card" style="width: 18rem;">
+                <img src="~/Imgs/bar.png" class="card-img-top" alt="..." >
+                <div class="card-body">
+                    <h5 class="card-title">@LS["top-selected-services"]</h5>
+                    <p class="card-text">@LS["top-selected-services-description"]</p>
+                    
+                </div>
+            </button>
+
+            <button type="submit" name="ReportType" value="TopRatedServices" class="card" style="width: 18rem;">
+                <img src="~/Imgs/arrow (1).png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@LS["top-rated-services"]</h5>
+                    <p class="card-text">@LS["top-rated-services-description"]</p>
+
+                </div>
+            </button>
+            <button type="submit" name="ReportType" value="TopRevenue" class="card" style="width: 18rem;">
+                <img src="~/Imgs/lineChart.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@LS["highest-revenue-services"]</h5>
+                    <p class="card-text">@LS["highest-revenue-services-description"]</p>
+
+                </div>
+            </button>
+        </div>
+       
+    </form>
+   
+</div>

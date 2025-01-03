@@ -1,0 +1,80 @@
+﻿@page "/airline/routes/disabled"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.DisabledRoutesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LA["disabled-routes"];
+}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h3>@LA["disabled-routes"]</h3>
+    </div>
+    <div class="row mb-3">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                @LA["disabled-routes"]
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/airline/routes/enabled">@LA["enabled-routes"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Routes.Any())
+        {
+            foreach (var route in Model.Routes)
+            {
+                var routeId = Hash.EncodeInt(route.Id);
+                <div class="col-12 mb-4">
+                    <div class="card h-100 card-silver shadow-sm">
+                        <div class="card-header fs-5 fw-bold blue-text">
+                            <i class="fa-solid fa-plane-departure ms-2"></i> <span>@route.DepartureAirport </span> ||
+                            <i class="fa-solid fa-plane-arrival ms-2"></i> <span>@route.ArrivalAirport </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                <div>
+                                    <p class="card-text">
+                                        <strong>
+                                            @LS["available-services"]
+                                            :
+                                        </strong>@Arabic.ConvertToArabicDigitsByCulture(Model.RouteEnabledServices[route.Id], CultureInfo.CurrentCulture.Name)
+                                    </p>
+                                </div>
+                                <div class="flex-grow-1 d-flex justify-content-end mt-3 mt-md-0">
+                                    <a href="/airline/routes/@routeId"
+                                       class="btn btn-light me-2  border-dark">
+                                        @L["details"]
+                                    </a>
+
+                                    <a href="/airline/routes/@routeId/edit" class="btn blue-button me-2">@LA["edit-route"]</a>
+                                    <form id="form-@routeId" method="post" asp-route-id="@routeId" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@routeId"/>
+                                        <button class="btn btn-success me-2">@L["enable"]</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>@L["no-data-available"]</p>
+        }
+    </div>
+</div>

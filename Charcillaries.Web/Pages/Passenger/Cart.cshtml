@@ -1,0 +1,130 @@
+﻿@page
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.CartModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<PassengerLocalization> LP
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @LP["your-cart"];
+}
+<div class="container mt-5">
+    <div class="d-flex flex-column align-items-center w-100">
+
+        <div class="row w-100">
+            @if (Model.PassengerAmenities.Any(a => a.Confirmed == 0))
+            {
+                <div class="mb-4 text-center">
+                    @if (Model.CartItems == 1)
+                    {
+                        <h3>@LP["your-cart"] (@Model.CartItems @LS["item"])</h3>
+                    }
+                    else
+                    {
+                        <h3>@LP["your-cart"] (@Model.CartItems @LS["items"])</h3>
+                    }
+                </div>
+                @foreach (var amenity in Model.PassengerAmenities.Where(amenity => amenity.Confirmed == 0))
+                {
+                    var amenityId = Hash.EncodeInt(amenity.Id);
+                    <div class="col-12 mb-4 d-flex justify-content-center">
+                        <div class="card h-100 card-silver shadow-sm" style="width: 18rem;">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                    <p class="card-text fs-5 blue-text">
+                                        <strong>@amenity.RouteAmenity.Amenity.Name </strong>
+                                    </p>
+                                    <form id="form-@amenityId" method="post" asp-page-handler="Remove"
+                                          asp-route-id="@amenityId" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@amenityId"/>
+                                        <button type="button" class="btn btn-link p-0 mb-2 delete-button" title="Delete"
+                                                data-form-id="form-@amenityId" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                            <i class="fa fa-trash" style="font-size:28px;color:red"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <p>
+                                    @LS["price"]: @Arabic.ConvertToArabicDigitsByCulture(
+                                                      Model.ItemsPrice.TryGetValue(amenity.Id, out var value) ? value.ToString("N2") : "N/A",
+                                                      CultureInfo.CurrentCulture.Name) @L["egp"]
+                                </p>
+
+                                <div class="d-flex flex-column">
+                                    <p>@LF["flight"]: @amenity.Passenger.Flight.FlightNumber</p>
+                                    <p>
+                                        @L["from"] @amenity.Passenger.Flight.FlightRoute.DepartureAirport
+                                        @L["to"] @amenity.Passenger.Flight.FlightRoute.ArrivalAirport
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row w-100">
+                    <div class="col-12 text-center">
+                        <div class="card bg-light shadow-sm mt-4">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3" style="color:#3f539f;">@LS["total"]</h4>
+                                <h1 class="display-6 fw-bold" style="color:#3f539f;">
+                                    @Arabic.ConvertToArabicDigitsByCulture(Model.TotalPrice.ToString("N2"), CultureInfo.CurrentCulture.Name) @L["egp"]
+                                </h1>
+                                <div class="mt-4">
+                                    <form method="post" asp-page-handler="Checkout">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit"
+                                                class="btn btn-sm button px-4 py-2">
+                                            @LS["checkout"]
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="empty-cart-container text-center">
+                    <img src="/Icons/cart-empty_15917015 (1).png" alt="Empty Cart" style="max-width: 150px; margin-bottom: 20px;">
+                    <h3>@LP["cart-empty"]</h3>
+                    <p style="color: #777;">@LP["shop-now"]</p>
+                    <a href="/passenger/flights/upcoming-flights" class="btn blue-button mt-3">@LP["view-upcoming-flights"]</a>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@L["confirm-deletion"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @L["delete-sentence"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@L["cancel"]</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">@L["confirm"]</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Shared/deleteModal.js"></script>

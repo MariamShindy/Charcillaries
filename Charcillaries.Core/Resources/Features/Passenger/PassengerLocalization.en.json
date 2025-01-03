@@ -1,0 +1,21 @@
+{
+  "add-passenger": "Add passenger",
+  "already-assigned": "Already assigned",
+  "assigned-passengers": "Assigned passengers",
+  "back-to-passengers": "Back to passengers",
+  "no-passengers-available": "No passengers available",
+  "passenger": "Passenger",
+  "passenger-details": "Passenger details",
+  "passenger-flights": "Passenger's flights",
+  "passengers": "Passengers",
+  "total-passengers": "Total passengers",
+  "view-passengers": "View passengers",
+  "your-cart": "Your cart",
+  "passenger-dashboard": "Passenger dashboard",
+  "cart-empty": "Your Cart is Empty",
+  "shop-now": "It looks like you haven't added anything to your cart yet. Start shopping now!",
+  "view-upcoming-flights": "View Upcoming Flights",
+  "thank-you": "Thank you for your purchase",
+  "transaction-success": "Your transaction was successful.",
+  "confirmation": "A confirmation email has been sent to you with the details of your purchase."
+}

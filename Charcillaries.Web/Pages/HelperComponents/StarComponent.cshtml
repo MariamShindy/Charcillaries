@@ -1,0 +1,19 @@
+﻿@model int
+
+<div class="star-rating">
+    @for (var i = 5; i >= 1; i--)
+    {
+        <span class="star" data-value="@i">
+            @if (i <= Model)
+            {
+                <i class="fas fa-star"></i>
+                <!-- Filled star -->
+            }
+            else
+            {
+                <i class="far fa-star"></i>
+                <!-- Empty star -->
+            }
+        </span>
+    }
+</div>

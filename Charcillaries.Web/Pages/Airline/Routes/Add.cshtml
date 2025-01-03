@@ -1,0 +1,103 @@
+﻿@page "/airline/routes/add"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.AddModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LA["add-route"];
+}
+<div class="container mt-5">
+    <h3 class="mb-4 text-center">@LA["add-route"]</h3>
+    <form method="post" enctype="application/x-www-form-urlencoded" id="routeForm">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" id="hiddenServiceId" name="ServiceId" asp-for="ServiceId" value="0"/>
+        <!-- Airports -->
+        <div class="row mb-4">
+            <div class="col-lg-6 mb-3">
+                <i class="fa-solid fa-plane-departure me-3"></i>
+                <label class="form-label">@L["departure-airport"]</label>
+
+                <select class="form-select" aria-label="Select departure airport" asp-for="Route.DepartureAirport">
+                    <option selected disabled>@L["select"] @L["departure-airport"]</option>
+                    @foreach (var airport in Model.Airports)
+                    {
+                        <option>@airport</option>
+                    }
+                </select>
+                <span asp-validation-for="Route.DepartureAirport" class="text-danger"></span> <!-- This is the validation message -->
+            </div>
+            <div class="col-lg-6 mb-3">
+                <i class="fa-solid fa-plane-arrival me-3"></i>
+                <label class="form-label">@L["arrival-airport"]</label>
+                <select class="form-select" aria-label="Select arrival airport" asp-for="Route.ArrivalAirport">
+                    <option selected disabled>@L["select"] @L["arrival-airport"]</option>
+                    @foreach (var airport in Model.Airports)
+                    {
+                        <option>@airport</option>
+                    }
+                </select>
+                <span asp-validation-for="Route.ArrivalAirport" class="text-danger"></span> <!-- This is the validation message -->
+            </div>
+        </div>
+    </form>
+    <!-- Services -->
+    <form hx-post="?handler=Services" hx-target="#servicesContainer" hx-swap="innerHTML">
+        @Html.AntiForgeryToken()
+        <div class="card mb-4">
+            <div class="card-header text-center">
+                <h5 class="mb-0">@LS["add-service"]</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-6 mb-3">
+                        <label class="form-label">@LS["services"]</label>
+                        <select id="serviceId" name="ServiceId" class="form-select" aria-label="Select service" asp-for="ServiceId">
+                            @foreach (var amenity in Model.Amenities)
+                            {
+                                <option value="@Hash.EncodeInt(amenity.Id)">@amenity.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6 mb-3">
+                        <label class="form-label">@LS["price"] @L["egp"]</label>
+                        <input id="servicePrice" name="ServicePrice" type="number" class="form-control" placeholder=@L["enter-price"] step="0.01" value="1.0" asp-for="ServicePrice">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-grid">
+                        <div id="duplicateServiceMessage" class="text-danger mt-2" style="display:none;"></div>
+                        <span asp-validation-for="RouteAmenity.Price" class="text-danger mx-auto"></span> <!-- This is the validation message -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 d-grid">
+                        <button type="submit" class="btn blue-button mt-3 mx-auto">@L["add"]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Selected Services -->
+    <div class="card mb-4" id="servicesContainer">
+        @await Html.PartialAsync("_SelectedServices", @Model.serviceData)
+    </div>
+
+
+    <div class="text-center mb-2">
+        <button type="submit" class="btn btn-success" form="routeForm">@LA["save-route"]</button>
+        <a href="/airline/routes/enabled" class="btn btn-secondary ms-2">@LA["cancel"]</a>
+    </div>
+</div>

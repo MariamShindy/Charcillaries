@@ -1,0 +1,56 @@
+﻿@page "/admin/flights/{flightId}"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.Flights.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<TourOperatorLocalization> LT
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = $"{LF["flight"]} {Model.Flight?.FlightNumber}";
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h3 class="mb-5">@LF["flight-details"]</h3>
+
+    <div class="w-50">
+        <div class="mb-3">
+            <strong>@LF["flight-number"]</strong>
+            <p class="border rounded p-2">@Model.Flight?.FlightNumber</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["departure-date"]</strong>
+            <p class="border rounded p-2">@Arabic.ConvertToArabicDigitsByCulture(Model.Flight!.DepartureDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["arrival-date"]</strong>
+            <p class="border rounded p-2">@Arabic.ConvertToArabicDigitsByCulture(Model.Flight!.ArrivalDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["from"]</strong>
+            <p class="border rounded p-2">@Model.Flight?.FlightRoute.DepartureAirport</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["to"]</strong>
+            <p class="border rounded p-2">@Model.Flight?.FlightRoute.ArrivalAirport</p>
+        </div>
+        <div class="mb-3">
+            <strong>@LT["tour-operator"]</strong>
+            <p class="border rounded p-2">@Model.Flight?.TourOperator.Name</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["number-of-seats"]</strong>
+            <p class="border rounded p-2">@Arabic.ConvertToArabicDigitsByCulture(Model.Flight!.NumberOfSeats.ToString(), CultureInfo.CurrentCulture.Name)</p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <a href="/admin/flights" class="btn button mt-4">@LF["back-to-flights"]</a>
+        </div>
+    </div>
+</div>

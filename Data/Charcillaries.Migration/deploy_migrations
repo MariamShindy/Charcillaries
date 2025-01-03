@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+project_folder=$1
+
+[ ! -d $project_folder ] && echo -e  "please provide exsiting absolute path of project folder\n$usage_format" && exit 1
+
+cd $project_folder
+
+docker-compose build && docker-compose run --rm db

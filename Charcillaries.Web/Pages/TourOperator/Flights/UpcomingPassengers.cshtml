@@ -1,0 +1,179 @@
+﻿@page "/tour-operator/flights/{flightId}/upcoming-passengers"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Web.HtmlHelpers
+@using Htmx.TagHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.TourOperator.Flights.UpcomingFlightPassengers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+@inject IStringLocalizer<PassengerLocalization> LP
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+@{
+    Layout = "_TourOperatorLayout";
+    ViewData["Title"] = @LF["upcmoing-passengers"];
+
+}
+
+@section Styles {
+    <style>
+    [dir="rtl"] .ms-4 {
+        margin-right: 1.5rem;
+        margin-left: 0 !important;
+    }
+
+    [dir="ltr"] .ms-4 {
+        margin-left: 1.5rem;
+        margin-right: 0;
+    }
+</style>
+}
+
+<div class="container mt-5">
+    <div class="row h-100">
+        <div class="col col-12 col-md-8">
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center mb-1">
+                    <h3 class="mb-0">
+                        @LF["flight"] @Model.FlightDetailsView!.FlightNumber
+                    </h3>
+                    @* departure and arrival airport with fontawesome icon *@
+                    <div class="d-flex align-items-center ms-3">
+                        <i class="fas fa-plane-departure me-1"></i>
+                        <p class="mb-0">@Model.FlightDetailsView.FlightRoute.DepartureAirport</p>
+                        <i class="fas fa-plane-arrival ms-2 me-1"></i>
+                        <p class="mb-0">@Model.FlightDetailsView.FlightRoute.ArrivalAirport</p>
+                    </div>
+                </div>
+                <div>
+                    @* departure and arrival date with arrow inbetween and date icon at start*@
+                    <div class="d-flex align-items-center">
+                        @if (CultureInfo.CurrentCulture.TextInfo.IsRightToLeft)
+                        {
+                            <i class="far fa-calendar-alt ms-2"></i>
+                            <p class="mb-0">@Arabic.ConvertToArabicDigits(Model.FlightDetailsView.ArrivalDate.ToString())</p>
+                            <i class="fas fa-arrow-left mx-2"></i>
+                            <p class="mb-0">@Arabic.ConvertToArabicDigits(Model.FlightDetailsView.DepartureDate.ToString())</p>
+                        }
+                        else
+                        {
+                            <i class="far fa-calendar-alt me-2"></i>
+                            <p class="mb-0">@Model.FlightDetailsView.DepartureDate</p>
+                            <i class="fas fa-arrow-right mx-2"></i>
+                            <p class="mb-0">@Model.FlightDetailsView.ArrivalDate</p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown mt-4 mb-2 d-flex justify-content-between">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    @L["sort-by"]
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="?sort=firsNameAsc">@L["first-name-a-z"]</a>
+                    <a class="dropdown-item" href="?sort=firstNameDes">@L["first-name-z-a"]</a>
+                    <a class="dropdown-item" href="?sort=lastNameAsc">@L["last-name-a-z"]</a>
+                    <a class="dropdown-item" href="?sort=lastNameDes">@L["last-name-z-a"]</a>
+                </div>
+                <div hx-get="?handler=Search" hx-target="#passengerData" hx-trigger="input" hx-vals='js:{searchTerm: getSearchVal()}'>
+                    <input type="text" id="search" name="searchTerm" class="form-control" placeholder=@L["search"] aria-label="Search">
+                </div>
+            </div>
+            <button class="btn button d-md-none" data-bs-toggle="offcanvas" data-bs-target="#AddPassengerOffcanvas">
+                @LP["add-passenger"]
+            </button>
+
+            <div id="passengerData">
+               
+                @foreach (var passenger in Model.PassengerListViews)
+                {
+                    var passengerId = Hash.EncodeInt(passenger.Id);
+                    <div id="passenger-@passengerId" class="d-flex flex-column w-100 rounded-3 py-3 px-4 mb-2"
+                         style="background: #eeeeee">
+                        <h3>@passenger.Person.FirstName @passenger.Person.LastName</h3>
+                        <div class="d-flex align-items-center flex-wrap">
+                            <p class="mb-0">@passenger.Person.Email</p>
+                            <p class="mb-0 ms-4" dir="ltr">@passenger.Person.PhoneNumber</p>
+                            <div class="flex-grow-1 d-flex justify-content-end">
+                                <button hx-post hx-include="input[name='__RequestVerificationToken']"
+                                        hx-page-handler="Delete" hx-swap="delete" hx-target="#passenger-@passengerId"
+                                        hx-vals='{"passengerId": "@passengerId"}' class="btn button-danger btn-danger">
+                                    @L["unassign"]
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    }
+              
+            </div>
+        </div>
+        <div id="AddPassengerOffcanvas" class="col col-md-4 offcanvas-md offcanvas-end">
+            <h3 class="mt-5 mb-2">@LP["add-passenger"]</h3>
+            <form hx-post hx-target="#passengerData" hx-include="input[name='__RequestVerificationToken']"
+                  hx-disabled-elt=".button" hx-swap="afterbegin"
+                  class="p-3 rounded-3 d-flex flex-column" style="background: #eeeeee">
+                @* @Html.AntiForgeryToken() *@
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">@L["first-name"]</label>
+                    <input type="text" class="form-control" id="firstName" asp-for="PassengerNewInput.Person.FirstName"
+                           style="background: #fbfbfb">
+                    <span asp-validation-for="PassengerNewInput.Person.FirstName" id="FirstNameVal"
+                          class="text-danger">
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">@L["last-name"]</label>
+                    <input type="text" class="form-control" id="lastName" asp-for="PassengerNewInput.Person.LastName"
+                           style="background: #fbfbfb">
+                    <span asp-validation-for="PassengerNewInput.Person.LastName" id="LastNameVal"
+                          class="text-danger">
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">@L["email"]</label>
+                    <input type="email" class="form-control" id="email" asp-for="PassengerNewInput.Person.Email"
+                           style="background: #fbfbfb">
+                    <span asp-validation-for="PassengerNewInput.Person.Email" id="EmailVal" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">@L["phone-number"]</label>
+                    <input type="text" class="form-control" id="phoneNumber"
+                           asp-for="PassengerNewInput.Person.PhoneNumber" style="background: #fbfbfb">
+                    <span asp-validation-for="PassengerNewInput.Person.PhoneNumber" id="PhoneNumberVal"
+                          class="text-danger">
+                    </span>
+                </div>
+                <div>
+                    <button type="submit" class="btn button px-4">@L["add"]</button>
+                    <i class="fa-solid fa-spinner fa-spin-pulse htmx-indicator"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('htmx:afterSwap', function (event) {
+        if (event.detail.pathInfo.requestPath === window.location.pathname) {
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phoneNumber').value = '';
+        }
+    });
+    function getSearchVal() {
+        return document.getElementById("search").value ;
+    }
+    document.getElementById('search').addEventListener('input', function () {
+        if (this.value === '') {
+            window.location.reload();
+        }
+    });
+</script>

@@ -1,0 +1,61 @@
+﻿@page
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.TourOperator.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<PassengerLocalization> LP
+@{
+    Layout = "~/Pages/Shared/_TourOperatorLayout.cshtml";
+    ViewData["Title"] = "Tour Operator Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="row text-center justify-content-center">
+        <h2>@LT["dashboard-welcome"]</h2>
+        <p>@LT["dashboard-message"]</p>
+        <br />
+        <br />
+    </div>
+
+    <div class="row text-center justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary p-3">
+                <div class="inner">
+                    <h3>@Model.TotalFlights</h3>
+                    <p class="fs-5 fw-bold">@LF["total-assigned-flights"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-plane-departure" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary p-3">
+                <div class="inner">
+                    <h3>@Model.UpcomingFlights</h3>
+                    <p class="fs-5 fw-bold">@LF["assigned-upcoming-flights"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-plane-arrival" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary p-3">
+                <div class="inner">
+                    <h3>@Model.Passengers</h3>
+                    <p class="fs-5 fw-bold">@LP["assigned-passengers"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-users" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

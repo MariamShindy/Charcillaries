@@ -1,0 +1,68 @@
+﻿@page "/airline/routes/{routeId}/services/add"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.Services.AddModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LS["add-route-services"];
+}
+<div class="container mt-5">
+    <div class="d-flex align-items-center w-100 flex-column">
+        <div class="card mb-5 p-2">
+            <div class="card-body">
+                <h4 class="card-title text-center">@LA["route"]</h4>
+                <p class="card-text">
+                    <strong class="fs-5">
+                        <i class="fa-solid fa-plane-departure me-1"></i>
+                        <span class="me-3">@Model.Route?.DepartureAirport</span>
+                        <i class="fa-solid fa-plane-arrival me-1"></i>
+                        <span>@Model.Route?.ArrivalAirport</span>
+                    </strong>
+                </p>
+            </div>
+        </div>
+        <h3 class="mb-4">@LS["add-service"]</h3>
+        <form method="post" enctype="application/x-www-form-urlencoded">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row g-3 align-items-center">
+                <div class="col-12 mb-3">
+                    <label class="form-label">@LS["services"]</label>
+                    <select id="serviceSelect" class="form-select" aria-label="Select service" asp-for="AmenityId">
+                        @foreach (var amenity in Model.Amenities)
+                        {
+                            <option value="@Hash.EncodeInt(amenity.Id)">@amenity.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="RouteAmenity.AmenityId" class="text-danger form-text"></span> <!-- This is the validation message -->
+                </div>
+                <div class="col-12 mb-3">
+                    <label class="form-label">@LS["price"] @L["egp"]</label>
+                    <input id="priceInput" type="number" class="form-control" placeholder=@L["enter-price"] step="0.01" asp-for="RouteAmenity.Price" value="1.0">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 d-grid">
+                    <div id="duplicateServiceMessage" class="text-danger mt-2" style="display:none;"></div>
+                    <span asp-validation-for="RouteAmenity.Price" class="text-danger mx-auto"></span> <!-- This is the validation message -->
+                </div>
+            </div>
+            <div class="mt-5">
+                <button type="submit" class="btn btn-success">@L["save"]</button>
+                <a href="/airline/routes/@Model.RouteId/services/enabled" class="btn btn-secondary ms-2">@L["cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>

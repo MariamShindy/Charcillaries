@@ -1,0 +1,38 @@
+using Charcillaries.Core;
+using Charcillaries.Core.Features.Airline;
+using Charcillaries.Data.Views.DtoClasses;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Charcillaries.Web.Pages.Airline.Routes.Services;
+
+public class DisabledModel(IAirlineRepository repo, ILogger<IndexModel> logger) : PageModel
+{
+    public List<RouteAmenityListView> RouteAmenities { get; set; } = [];
+    public FlightRouteDetailsView? Route { get; set; }
+
+    [BindProperty(SupportsGet = true)] public string RouteId { get; set; } = string.Empty;
+
+    public async Task<IActionResult> OnGetAsync(string routeId)
+    {
+        var decodedRouteId = Hash.DecodeToInt(routeId);
+
+        RouteAmenities = await repo.GetRouteAmenities(decodedRouteId, 0);
+        Route = await repo.GetAirlineRouteDetailsAsync(decodedRouteId);
+        if (Route == null)
+        {
+            return NotFound();
+        }
+
+        RouteId = routeId;
+        logger.LogInformation("route amenities are fetched");
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPost(string id)
+    {
+        logger.LogInformation("Attempting to enable route amenity with ID: {RouteAmenity}", id);
+        await repo.EnableRouteAmenityAsync(Hash.DecodeToInt(id));
+        return RedirectToPage();
+    }
+}

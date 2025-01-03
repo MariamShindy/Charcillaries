@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Charcillaries.Data.Views.Persistence</AssemblyName>
+    <RootNamespace>Charcillaries.Data.Views.Persistence</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="7.5.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseGeneric\Charcillaries.Data.csproj" />
+    <ProjectReference Include="..\Charcillaries.Data.Views\Charcillaries.Data.Views.csproj" />
+  </ItemGroup>
+</Project>

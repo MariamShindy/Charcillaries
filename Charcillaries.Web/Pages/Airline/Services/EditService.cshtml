@@ -1,0 +1,72 @@
+﻿@page "/airline/services/edit-service/{serviceId}"
+@using Charcillaries.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@using Charcillaries.Core.Features.Images
+@model Charcillaries.Web.Pages.Airline.Services.EditServiceModel
+@inject IImageService ImageService
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LS["edit-service"];
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h1> @LS["edit-service"]</h1>
+    <form method="post" class="w-50" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ServiceInput.IconGuid" value="@Model.Service?.Icon.ToString()"/>
+        <div class="mb-3">
+            <label for="serviceName" class="mb-2 form-label">@L["name"]</label>
+            <input type="text" class="form-control" id="serviceName" value="@Model.Service?.Name"
+                   asp-for="ServiceInput.Name">
+            <span asp-validation-for="ServiceInput.Name" class="text-danger"></span> <!-- This is the validation message -->
+
+        </div>
+        <div class="mb-3">
+            <label for="Description" class="mb-2 form-label">@L["description"]</label>
+            <input type="text" class="form-control" id="serviceDescription" value="@Model.Service?.Description"
+                   asp-for="ServiceInput.Description"> 
+        
+            <span asp-validation-for="ServiceInput.Description" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div>
+            <div class="d-flex">
+                <div class="w-100 d-flex flex-column justify-content-center">
+                    <label for="amenityIcon" class="form-label">@L["icon"]</label>
+                    <input type="file" class="form-control" id="amenityIcon" asp-for="ServiceInput.Icon"
+                           placeholder=@L["upload-icon"]>
+                </div>
+                @if (Model.Service?.Icon is not null)
+                {
+                    <div class="w-50 d-flex flex-column ms-4">
+                        <img src="@await ImageService.GetImageUrl(Model.Service?.Icon.ToString()!)"
+                             style="height: 70%; width: 90%" class="icon" alt=""/>
+                             <br />
+                        <button class="btn button-danger btn-sm w-60" hx-post hx-page-handler="Delete"
+                                hx-params="__RequestVerificationToken" hx-target="closest div" hx-swap="delete">
+                            @L["delete-icon"]
+                        </button>
+                    </div>
+                }
+            </div>
+            <span asp-validation-for="ServiceInput.Icon" class="text-danger"></span>
+            <!-- This is the validation message -->
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <button href="airline/services/enabled" class="btn blue-button">@L["edit"]</button>
+            <a href="/airline/services/enabled" class="btn btn-secondary">@L["cancel"]</a>
+        </div>
+    </form>
+</div>

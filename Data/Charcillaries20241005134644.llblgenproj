@@ -1,0 +1,2917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--LLBLGen Pro v5.10 project file. Do not manually edit this file. Incorrect references could lead to an unloadable project file.-->
+<Project Version="5.10" TargetFrameworkName="LLBLGen Pro Runtime Framework" UseLegacyDefaults="false">
+  <Properties>
+    <Abbreviations />
+    <Property Name="AdditionalTaskPerformerFolder" Value="" />
+    <Property Name="AdditionalTasksFolder" Value="" />
+    <Property Name="AdditionalTemplatesFolder" Value="" />
+    <Property Name="AdditionalTypeConverterFolder" Value="" />
+    <Property Name="AddNewElementsAfterRefresh_v5" Value="false" />
+    <Property Name="AddNewElementsAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="AddNewFieldsAfterRefresh_v5" Value="true" />
+    <Property Name="AddNewFieldsAfterRelationalModelDataSync_v5" Value="true" />
+    <Property Name="AddNewViewsAsEntitiesAfterRefresh_v5" Value="false" />
+    <Property Name="AddNewViewsAsEntitiesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="AutoAddManyToManyRelationships" Value="false" />
+    <Property Name="AutoAssignSequencesToIntegerPks" Value="true" />
+    <Property Name="AutoAssignTypeConverterToFieldMapping" Value="true" />
+    <Property Name="AutomaticallyGenerateSourceCodeOnProjectSave" Value="false" />
+    <Property Name="ConnectionStringKeyNamePattern" Value="ConnectionString.{$ProviderName}" />
+    <Property Name="DefaultDDLSQLScriptDestinationFolder" Value=".\DDLSQLScripts" />
+    <Property Name="DefaultDeleteRuleAction" Value="1" />
+    <Property Name="DefaultSourceCodeDestinationFolder" Value=".\Code" />
+    <Property Name="DefaultUpdateRuleAction" Value="0" />
+    <Property Name="DeleteObsoleteFiles" Value="true" />
+    <Property Name="ElementNamePrefixPattern" Value="{$SchemaName}" />
+    <Property Name="ElementNamePrefixPatternIsAppliedWhen" Value="1" />
+    <Property Name="EncodingToUse" Value="0" />
+    <Property Name="EntityActionCombinationDefaultForTable" Value="0" />
+    <Property Name="EntityActionCombinationDefaultForView" Value="4" />
+    <Property Name="EntityFieldNameStripPattern" Value="{}{}" />
+    <Property Name="EntityNameStripPattern" Value="{tbl_}{}" />
+    <Property Name="ExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="FailCodeGenerationOnWriteError" Value="false" />
+    <Property Name="FieldMappedOntoRelatedFieldPattern" Value="{$RelatedFieldName}" />
+    <Property Name="FkFieldsAreNamedAfterTargetField" Value="true" />
+    <Property Name="ForeignKeyConstraintPattern" Value="FK_{$Guid}" />
+    <Property Name="ForeignKeyFieldPattern" Value="{$NavigatorName}{$RelatedFieldName}" />
+    <Property Name="GroupUsage" Value="0" />
+    <Property Name="IdentifyingFieldsFollowDBPrimaryKeyConstraints_v5" Value="true" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseInsensitiveDBs" Value="false" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseSensitiveDBs" Value="false" />
+    <Property Name="LengthPrecisionScaleFollowDBLengthPrecisionScale_v5" Value="true" />
+    <Property Name="MakeElementNamePascalCasing" Value="true" />
+    <Property Name="NavigatorMappedOntoManyToManyPattern" Value="{$EndEntityName}CollectionVia{$IntermediateEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneManyToOnePattern" Value="{$EndEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneToManyPattern" Value="{$EndEntityName$P}" />
+    <Property Name="NonExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="PreferDecimalOverCurrencyTypes" Value="true" />
+    <Property Name="PreferNaturalCharacterTypes" Value="true" />
+    <Property Name="PreferSystemSequencesOverSchemaSequencesIfApplicable" Value="true" />
+    <Property Name="PreferVariableLengthTypes" Value="true" />
+    <Property Name="PrimaryKeyConstraintPattern" Value="PK_{$Guid}" />
+    <Property Name="ProjectCreator" Value="SilverKey" />
+    <Property Name="ProjectName" Value="Charcillaries.Data" />
+    <Property Name="ReflectNullabilityOfElementFieldInTargetField_v5" Value="false" />
+    <Property Name="ReflectTypeOfElementFieldInTargetField_v5" Value="true" />
+    <Property Name="RelationalModelDataElementNameCasingCaseInsensitiveDBs" Value="3" />
+    <Property Name="RelationalModelDataElementNameCasingCaseSensitiveDBs" Value="3" />
+    <Property Name="RelationshipsFollowDBForeignKeyConstraints_v5" Value="true" />
+    <Property Name="RemoveUnderscoresFromElementName" Value="true" />
+    <Property Name="RemoveUnmappedElementsAfterRefresh_v5" Value="false" />
+    <Property Name="RemoveUnmappedElementsAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="ResetFieldOrderBasedOnTargetOrderAtRefresh" Value="false" />
+    <Property Name="ResetFieldOrderBasedOnTargetOrderAtRelationalModelDataSync" Value="false" />
+    <Property Name="RetrieveDBCustomProperties" Value="false" />
+    <Property Name="RootNamespace" Value="Charcillaries" />
+    <Property Name="SequenceNameMatchingPattern" Value="SEQ_{$TableName}" />
+    <Property Name="SequencePattern" Value="SEQ_{$EntityName}" />
+    <Property Name="SetGroupNameAfterSchemaName" Value="true" />
+    <Property Name="SetSchemaNameAfterGroupName" Value="true" />
+    <Property Name="SingularizeElementNames" Value="true" />
+    <Property Name="StoredProcNameStripPattern" Value="{pr_, sp_}{}" />
+    <Property Name="StoreTimeLastGeneratedIntoProject" Value="false" />
+    <Property Name="StoreTimeLastSyncIntoProject" Value="true" />
+    <Property Name="SyncCustomFieldOrderingWithTableFieldIndex" Value="false" />
+    <Property Name="SyncMappedElementNamesAfterRefresh_v5" Value="false" />
+    <Property Name="SyncMappedElementNamesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="SyncRelationalModelDataElementNameWithModelElementName_v5" Value="false" />
+    <Property Name="SyncRenamedMappedElementNamesAfterRefresh_v5" Value="false" />
+    <Property Name="SyncRenamedMappedElementNamesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="TableValuedFunctionNameStripPattern" Value="{fn_, pr_, sp_}{}" />
+    <Property Name="TargetPerEntityEdgesRequireBackingFkConstraint" Value="true" />
+    <Property Name="TypedViewFieldNameStripPattern" Value="{}{}" />
+    <Property Name="TypedViewMappedOnResultsetPattern" Value="{$ProcFunctionName}{$ResultsetName}Result" />
+    <Property Name="TypedViewNameStripPattern" Value="{vw_}{}" />
+    <Property Name="UniqueConstraintPattern" Value="UC_{$Guid}" />
+    <Property Name="UniqueConstraintsFollowDBUniqueConstraints_v5" Value="true" />
+    <Property Name="UpdateCustomPropertiesAfterRefresh_v5" Value="false" />
+    <Property Name="UpdateCustomPropertiesAfterRelationalModelDataSync_v5" Value="false" />
+    <Property Name="UseCustomFieldOrderingOnNewElements" Value="false" />
+  </Properties>
+  <TypeShortcuts />
+  <IgnoredWarnings />
+  <SavedSearchQueries />
+  <CodeGenerationCyclePreferences>
+    <OutputType Value="3">
+      <LastUsedPreferences>
+        <DestinationRootFolder Value=".\Code" />
+        <FrameworkName Value="LLBLGen Pro Runtime Framework" />
+        <LanguageName Value="C#" />
+        <PlatformName Value=".NET Standard 2.1" />
+        <PresetName Value="SD.Presets.Adapter.General.Netstandard" />
+        <RootNamespace Value="Charcillaries.Data" />
+        <TemplateGroup Value="Adapter" />
+        <TemplateBindings>
+          <Binding Name="SD.TemplateBindings.PostgreSqlSpecific" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.Netstandard21" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates" />
+          <Binding Name="SD.TemplateBindings.General" />
+        </TemplateBindings>
+        <AdhocTemplateSets />
+      </LastUsedPreferences>
+    </OutputType>
+  </CodeGenerationCyclePreferences>
+  <OutputSettingValues>
+    <SettingValues>
+      <SettingValue Name="1:AdapterDbGenericSubFolderName" Value="DatabaseGeneric" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificNamespaceSuffix" Value="DatabaseSpecific" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificProjectFileSuffix" Value="DBSpecific" Type="18" />
+      <SettingValue Name="1:AdapterDbSpecificSubFolderName" Value="DatabaseSpecific" Type="18" />
+      <SettingValue Name="1:ConvertNulledReferenceTypesToDefaultValue" Value="true" Type="3" />
+      <SettingValue Name="1:EntityBaseClassNameDefault" Value="CommonEntityBase" Type="18" />
+      <SettingValue Name="1:FieldPropertyIsPublicDefault" Value="true" Type="3" />
+      <SettingValue Name="1:GenerateAsNullableTypeDefault" Value="true" Type="3" />
+      <SettingValue Name="1:GenerateEntityFieldFactory" Value="false" Type="3" />
+      <SettingValue Name="1:GenerateEntityFieldsFactory" Value="false" Type="3" />
+      <SettingValue Name="1:InlineValueTypedFields" Value="true" Type="3" />
+      <SettingValue Name="1:LazyLoadingWithoutResultReturnsNew" Value="false" Type="3" />
+      <SettingValue Name="1:NavigatorPropertyIsPublicDefault" Value="true" Type="3" />
+      <SettingValue Name="1:SupportedActionCombinations" Value="0,1,2,3,4,5,6,7" Type="18" />
+      <SettingValue Name="1:TdlEmitTimeDateInOutputFiles" Value="false" Type="3" />
+      <SettingValue Name="1:TypedListOutputTypeDefault" Value="PocoWithQuerySpecQuery" Type="18" />
+      <SettingValue Name="1:TypedViewOutputTypeDefault" Value="PocoWithQuerySpecQuery" Type="18" />
+    </SettingValues>
+  </OutputSettingValues>
+  <CodeGenerationMetaDataDefaults>
+    <TargetElement Type="256">
+      <Defaults>
+        <Attributes>
+          <Attribute Value="Browsable($false)" />
+        </Attributes>
+      </Defaults>
+    </TargetElement>
+  </CodeGenerationMetaDataDefaults>
+  <EntityModel>
+    <ValueTypeDefinitions />
+    <EntityDefinitions>
+      <EntityDefinition Name="Airline" ObjectID="6df821f9-e203-431b-8b40-5a66be27b79a">
+        <Fields>
+          <Field Name="ContactInfo" Type="string" MaxLength="255" />
+          <Field Name="Email" Type="string" MaxLength="255" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="Name" Type="string" MaxLength="255" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="Amenity" ObjectID="3523fe4e-e55d-4dce-9a80-37623512f550">
+        <Fields>
+          <Field Name="AirlineId" Type="int" Precision="10" IsAutoCreated="true" />
+          <Field Name="Description" Type="string" MaxLength="255" />
+          <Field Name="Icon" Type="guid" IsOptional="true" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="Name" Type="string" MaxLength="255" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="AmenityFeedback" ObjectID="a9b2491f-d302-48ef-af9d-18cc4fa0ea51">
+        <Fields>
+          <Field Name="Comment" Type="string" IsOptional="true" MaxLength="1073741824" />
+          <Field Name="DateCreated" Type="datetime" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="PassengerId" Type="int" Precision="10" />
+          <Field Name="Rating" Type="int" IsOptional="true" Precision="10" />
+          <Field Name="RouteAmenityId" Type="int" Precision="10" />
+        </Fields>
+        <UniqueConstraints>
+          <UniqueConstraint Name="UqPassengerIdRouteAmenityId">
+            <Field Name="PassengerId" />
+            <Field Name="RouteAmenityId" />
+          </UniqueConstraint>
+        </UniqueConstraints>
+      </EntityDefinition>
+      <EntityDefinition Name="Flight" ObjectID="fe548bb5-7697-488e-8048-c27f931f1f0c">
+        <Fields>
+          <Field Name="ArrivalDate" Type="datetime" />
+          <Field Name="DepartureDate" Type="datetime" />
+          <Field Name="FlightNumber" Type="string" MaxLength="10" />
+          <Field Name="FlightRouteId" Type="int" Precision="10" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="NumberOfSeats" Type="int" Precision="10" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="TourOperatorId" Type="int" Precision="10" IsAutoCreated="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="FlightRoute" ObjectID="596915cc-a108-4ad3-96bd-d42d68c08555">
+        <Fields>
+          <Field Name="AirlineId" Type="int" Precision="10" />
+          <Field Name="ArrivalAirport" Type="string" MaxLength="3" />
+          <Field Name="DepartureAirport" Type="string" MaxLength="3" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+        </Fields>
+        <UniqueConstraints>
+          <UniqueConstraint Name="UqDepatrureAirportArrivalAirport">
+            <Field Name="AirlineId" />
+            <Field Name="ArrivalAirport" />
+            <Field Name="DepartureAirport" />
+          </UniqueConstraint>
+        </UniqueConstraints>
+      </EntityDefinition>
+      <EntityDefinition Name="Passenger" ObjectID="ce8d08ff-34d7-4263-8d7a-3cdae3b0812c">
+        <Fields>
+          <Field Name="FlightId" Type="int" Precision="10" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="PaymentAmount" Type="single" IsOptional="true" Precision="24" />
+          <Field Name="PaymentConfirmation" Type="string" IsOptional="true" MaxLength="255" />
+          <Field Name="PaymentConfirmationDate" Type="datetime" IsOptional="true" />
+          <Field Name="PersonId" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="PassengerAmenitySelection" ObjectID="358b0502-ca4b-42c2-98c1-50b8dcf0f5ce">
+        <Fields>
+          <Field Name="Confirmed" Type="int" IsOptional="true" Precision="10" />
+          <Field Name="Customization" Type="string" IsOptional="true" MaxLength="1073741824" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="PassengerId" Type="int" Precision="10" />
+          <Field Name="Quantity" Type="int" IsOptional="true" Precision="10" />
+          <Field Name="RouteAmenityId" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="Person" ObjectID="546c25e8-4a69-4292-a421-728fce23c25e">
+        <Fields>
+          <Field Name="Email" Type="string" MaxLength="255" />
+          <Field Name="FirstName" Type="string" MaxLength="50" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="LastName" Type="string" MaxLength="50" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="PassportNumber" Type="string" IsOptional="true" MaxLength="50" />
+          <Field Name="PhoneNumber" Type="string" IsOptional="true" MaxLength="30" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="Role" ObjectID="4f938dae-47b0-4383-8062-79a03dec5062">
+        <Fields>
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="Name" Type="string" MaxLength="200" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="RouteAmenity" ObjectID="03d80ce3-e05e-4dee-aa36-b0ead55a3f2d">
+        <Fields>
+          <Field Name="AmenityId" Type="int" Precision="10" />
+          <Field Name="FlightRouteId" Type="int" Precision="10" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="Price" Type="single" Precision="24" />
+          <Field Name="Quantity" Type="int" IsOptional="true" Precision="10" />
+        </Fields>
+        <UniqueConstraints>
+          <UniqueConstraint Name="UqFlightRouteIdAmenityId">
+            <Field Name="AmenityId" />
+            <Field Name="FlightRouteId" />
+          </UniqueConstraint>
+        </UniqueConstraints>
+      </EntityDefinition>
+      <EntityDefinition Name="RouteFlightFeedback" ObjectID="bcbb7bbb-985d-4d09-87ce-cbadf87dabc7">
+        <Fields>
+          <Field Name="Comment" Type="string" IsOptional="true" MaxLength="1073741824" />
+          <Field Name="DateCreated" Type="datetime" />
+          <Field Name="FlightId" Type="int" Precision="10" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="PassengerId" Type="int" Precision="10" />
+          <Field Name="Rating" Type="int" IsOptional="true" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TourOperator" ObjectID="ca1a1361-7b67-49d4-ae66-576b37362d9c">
+        <Fields>
+          <Field Name="ContactInfo" Type="string" MaxLength="255" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="Name" Type="string" MaxLength="255" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TourOperatorAirline" ObjectID="cd9176ae-b726-4697-97f2-95d4f758c2f0">
+        <Fields>
+          <Field Name="AirlineId" Type="int" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="TourOperatorId" Type="int" Precision="10" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="User" ObjectID="78b3b6c4-b619-4542-9999-3b0753afd556">
+        <Fields>
+          <Field Name="AirlineId" Type="int" IsOptional="true" Precision="10" />
+          <Field Name="Id" Type="int" IsReadOnly="true" Precision="10" IsPrimaryKey="true" />
+          <Field Name="ObjectStatus" Type="int" Precision="10" />
+          <Field Name="Password" Type="string" MaxLength="200" />
+          <Field Name="PersonId" Type="int" Precision="10" />
+          <Field Name="ResetToken" Type="string" IsOptional="true" MaxLength="50" />
+          <Field Name="ResetTokenExpiration" Type="datetime" IsOptional="true" />
+          <Field Name="RoleId" Type="int" Precision="10" />
+          <Field Name="TourOperatorId" Type="int" IsOptional="true" Precision="10" />
+        </Fields>
+      </EntityDefinition>
+    </EntityDefinitions>
+    <Relationships>
+      <NormalRelationship Name="Amenity.Airline-Airline.Amenities" Start=":Amenity" End=":Airline" StartNavigator="Airline" EndNavigator="Amenities" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AirlineId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="AmenityFeedback.Passenger-Passenger.AmenityFeedbacks" Start=":AmenityFeedback" End=":Passenger" StartNavigator="Passenger" EndNavigator="AmenityFeedbacks" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="PassengerId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="AmenityFeedback.RouteAmenity-RouteAmenity.AmenityFeedbacks" Start=":AmenityFeedback" End=":RouteAmenity" StartNavigator="RouteAmenity" EndNavigator="AmenityFeedbacks" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RouteAmenityId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Flight.FlightRoute-FlightRoute.Flights" Start=":Flight" End=":FlightRoute" StartNavigator="FlightRoute" EndNavigator="Flights" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="FlightRouteId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Flight.TourOperator-TourOperator.Flights" Start=":Flight" End=":TourOperator" StartNavigator="TourOperator" EndNavigator="Flights" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TourOperatorId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="FlightRoute.Airline-Airline.FlightRoutes" Start=":FlightRoute" End=":Airline" StartNavigator="Airline" EndNavigator="FlightRoutes" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AirlineId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Passenger.Flight-Flight.Passengers" Start=":Passenger" End=":Flight" StartNavigator="Flight" EndNavigator="Passengers" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="FlightId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Passenger.Person-Person.Passengers" Start=":Passenger" End=":Person" StartNavigator="Person" EndNavigator="Passengers" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="PersonId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="PassengerAmenitySelection.Passenger-Passenger.PassengerAmenitySelections" Start=":PassengerAmenitySelection" End=":Passenger" StartNavigator="Passenger" EndNavigator="PassengerAmenitySelections" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="PassengerId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="PassengerAmenitySelection.RouteAmenity-RouteAmenity.PassengerAmenitySelections" Start=":PassengerAmenitySelection" End=":RouteAmenity" StartNavigator="RouteAmenity" EndNavigator="PassengerAmenitySelections" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RouteAmenityId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="RouteAmenity.Amenity-Amenity.RouteAmenities" Start=":RouteAmenity" End=":Amenity" StartNavigator="Amenity" EndNavigator="RouteAmenities" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AmenityId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="RouteAmenity.FlightRoute-FlightRoute.RouteAmenities" Start=":RouteAmenity" End=":FlightRoute" StartNavigator="FlightRoute" EndNavigator="RouteAmenities" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="FlightRouteId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="RouteFlightFeedback.Flight-Flight.RouteFlightFeedbacks" Start=":RouteFlightFeedback" End=":Flight" StartNavigator="Flight" EndNavigator="RouteFlightFeedbacks" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="FlightId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="RouteFlightFeedback.Passenger-Passenger.RouteFlightFeedbacks" Start=":RouteFlightFeedback" End=":Passenger" StartNavigator="Passenger" EndNavigator="RouteFlightFeedbacks" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="PassengerId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TourOperatorAirline.Airline-Airline.TourOperatorAirlines" Start=":TourOperatorAirline" End=":Airline" StartNavigator="Airline" EndNavigator="TourOperatorAirlines" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AirlineId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TourOperatorAirline.TourOperator-TourOperator.TourOperatorAirlines" Start=":TourOperatorAirline" End=":TourOperator" StartNavigator="TourOperator" EndNavigator="TourOperatorAirlines" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TourOperatorId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.Airline-Airline.Users" Start=":User" End=":Airline" StartNavigator="Airline" EndNavigator="Users" Type="4" EndIsOptional="true">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AirlineId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.Person-Person.Users" Start=":User" End=":Person" StartNavigator="Person" EndNavigator="Users" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="PersonId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.Role-Role.Users" Start=":User" End=":Role" StartNavigator="Role" EndNavigator="Users" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RoleId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.TourOperator-TourOperator.Users" Start=":User" End=":TourOperator" StartNavigator="TourOperator" EndNavigator="Users" Type="4" EndIsOptional="true">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TourOperatorId" PkField="Id" />
+        </FieldRelationships>
+      </NormalRelationship>
+    </Relationships>
+    <InheritanceHierarchies />
+  </EntityModel>
+  <TargetDatabases>
+    <TargetDatabase Type="88EBFD8C-CBDD-4452-88AF-1C99E41A123F" SyncSource="2">
+      <ConnectionElements>
+        <ConnectionElement Name="ServerName" Value="localhost" />
+        <ConnectionElement Name="CatalogName" Value="charcillaries" />
+        <ConnectionElement Name="UserID" Value="postgres" />
+        <ConnectionElement Name="Password" Value="" />
+        <ConnectionElement Name="PortNumber" Value="5433" />
+        <ConnectionElement Name="SslMode" Value="Disable" />
+      </ConnectionElements>
+      <SystemSequences>
+        <Sequence Name="SystemIdentity" />
+      </SystemSequences>
+      <Catalogs>
+        <Catalog Name="charcillaries">
+          <Schemas>
+            <Schema Name="public" SyncSource="2" LastSyncWithDatabase="2024-10-05T10:10:03.6547848Z">
+              <Sequences>
+                <Sequence Name="airline_id_seq" />
+                <Sequence Name="amenity_feedback_id_seq" />
+                <Sequence Name="amenity_id_seq" />
+                <Sequence Name="flight_id_seq" />
+                <Sequence Name="flight_route_id_seq" />
+                <Sequence Name="passenger_amenity_selection_id_seq" />
+                <Sequence Name="passenger_id_seq" />
+                <Sequence Name="person_id_seq" />
+                <Sequence Name="role_id_seq" />
+                <Sequence Name="route_amenity_id_seq" />
+                <Sequence Name="route_flight_feedback_id_seq" />
+                <Sequence Name="tour_operator_id_seq" />
+                <Sequence Name="user_id_seq" />
+              </Sequences>
+              <Tables>
+                <Table Name="airline">
+                  <PkConstraintName Name="PK_airline" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="name" Ordinal="2" DbType="24" Length="255" />
+                    <Field Name="contact_info" Ordinal="3" DbType="24" Length="255" />
+                    <Field Name="email" Ordinal="4" DbType="24" Length="255" />
+                    <Field Name="object_status" Ordinal="5" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="amenity">
+                  <PkConstraintName Name="PK_amenity" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="name" Ordinal="2" DbType="24" Length="255" />
+                    <Field Name="description" Ordinal="3" DbType="24" Length="255" />
+                    <Field Name="icon" Ordinal="4" IsOptional="true" DbType="28" />
+                    <Field Name="airline_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="6" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="amenity_feedback">
+                  <PkConstraintName Name="PK_amenity_feedback" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="rating" Ordinal="2" IsOptional="true" DbType="9" Precision="10" />
+                    <Field Name="date_created" Ordinal="3" DbType="22" />
+                    <Field Name="comment" Ordinal="4" IsOptional="true" DbType="19" Length="1073741824" />
+                    <Field Name="passenger_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="route_amenity_id" Ordinal="6" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="7" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                  <UniqueConstraints>
+                    <UniqueConstraint Name="uq_passenger_id_route_amenity_id">
+                      <Field Name="passenger_id" />
+                      <Field Name="route_amenity_id" />
+                    </UniqueConstraint>
+                  </UniqueConstraints>
+                </Table>
+                <Table Name="flight">
+                  <PkConstraintName Name="PK_flight" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="flight_number" Ordinal="2" DbType="24" Length="10" />
+                    <Field Name="flight_route_id" Ordinal="3" DbType="9" Precision="10" />
+                    <Field Name="tour_operator_id" Ordinal="4" DbType="9" Precision="10" />
+                    <Field Name="departure_date" Ordinal="5" DbType="22" />
+                    <Field Name="arrival_date" Ordinal="6" DbType="22" />
+                    <Field Name="number_of_seats" Ordinal="7" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="8" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="flight_route">
+                  <PkConstraintName Name="PK_flight_route" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="airline_id" Ordinal="2" DbType="9" Precision="10" />
+                    <Field Name="departure_airport" Ordinal="3" DbType="24" Length="3" />
+                    <Field Name="arrival_airport" Ordinal="4" DbType="24" Length="3" />
+                    <Field Name="object_status" Ordinal="5" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                  <UniqueConstraints>
+                    <UniqueConstraint Name="uq_depatrure_airport_arrival_airport">
+                      <Field Name="departure_airport" />
+                      <Field Name="arrival_airport" />
+                      <Field Name="airline_id" />
+                    </UniqueConstraint>
+                  </UniqueConstraints>
+                </Table>
+                <Table Name="passenger">
+                  <PkConstraintName Name="PK_passenger" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="payment_confirmation" Ordinal="2" IsOptional="true" DbType="24" Length="255" />
+                    <Field Name="payment_confirmation_date" Ordinal="3" IsOptional="true" DbType="22" />
+                    <Field Name="payment_amount" Ordinal="4" IsOptional="true" DbType="6" Precision="24" />
+                    <Field Name="person_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="flight_id" Ordinal="6" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="7" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="passenger_amenity_selection">
+                  <PkConstraintName Name="PK_passenger_amenity_selection" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="quantity" Ordinal="2" IsOptional="true" HasDefaultValue="true" DefaultValue="0" DbType="9" Precision="10" />
+                    <Field Name="customization" Ordinal="3" IsOptional="true" DbType="19" Length="1073741824" />
+                    <Field Name="confirmed" Ordinal="4" IsOptional="true" HasDefaultValue="true" DefaultValue="0" DbType="9" Precision="10" />
+                    <Field Name="passenger_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="route_amenity_id" Ordinal="6" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="7" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="person">
+                  <PkConstraintName Name="PK_person" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="first_name" Ordinal="2" DbType="24" Length="50" />
+                    <Field Name="last_name" Ordinal="3" DbType="24" Length="50" />
+                    <Field Name="email" Ordinal="4" DbType="24" Length="255" />
+                    <Field Name="phone_number" Ordinal="5" IsOptional="true" DbType="24" Length="30" />
+                    <Field Name="passport_number" Ordinal="6" IsOptional="true" DbType="24" Length="50" />
+                    <Field Name="object_status" Ordinal="7" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="role">
+                  <PkConstraintName Name="PK_role" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="name" Ordinal="2" DbType="24" Length="200" />
+                    <Field Name="object_status" Ordinal="3" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="route_amenity">
+                  <PkConstraintName Name="PK_route_amenity" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="quantity" Ordinal="2" IsOptional="true" DbType="9" Precision="10" />
+                    <Field Name="price" Ordinal="3" DbType="6" Precision="24" />
+                    <Field Name="flight_route_id" Ordinal="4" DbType="9" Precision="10" />
+                    <Field Name="amenity_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="6" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                  <UniqueConstraints>
+                    <UniqueConstraint Name="uq_flight_route_id_amenity_id">
+                      <Field Name="flight_route_id" />
+                      <Field Name="amenity_id" />
+                    </UniqueConstraint>
+                  </UniqueConstraints>
+                </Table>
+                <Table Name="route_flight_feedback">
+                  <PkConstraintName Name="PK_route_flight_feedback" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="rating" Ordinal="2" IsOptional="true" DbType="9" Precision="10" />
+                    <Field Name="date_created" Ordinal="3" DbType="22" />
+                    <Field Name="comment" Ordinal="4" IsOptional="true" DbType="19" Length="1073741824" />
+                    <Field Name="passenger_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="flight_id" Ordinal="6" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="7" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="tour_operator">
+                  <PkConstraintName Name="PK_tour_operator" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="name" Ordinal="2" DbType="24" Length="255" />
+                    <Field Name="contact_info" Ordinal="3" DbType="24" Length="255" />
+                    <Field Name="object_status" Ordinal="4" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="tour_operator_airline">
+                  <PkConstraintName Name="PK_tour_operator_airline" />
+                  <Fields>
+                    <Field Name="tour_operator_id" Ordinal="1" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="airline_id" Ordinal="2" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="3" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+                <Table Name="user">
+                  <PkConstraintName Name="PK_user" />
+                  <Fields>
+                    <Field Name="id" Ordinal="1" IsIdentity="true" IsPrimaryKey="true" DbType="9" Precision="10" />
+                    <Field Name="password" Ordinal="2" DbType="24" Length="200" />
+                    <Field Name="reset_token" Ordinal="3" IsOptional="true" DbType="24" Length="256" />
+                    <Field Name="reset_token_expiration" Ordinal="4" IsOptional="true" DbType="22" />
+                    <Field Name="person_id" Ordinal="5" DbType="9" Precision="10" />
+                    <Field Name="role_id" Ordinal="6" DbType="9" Precision="10" />
+                    <Field Name="airline_id" Ordinal="7" IsOptional="true" DbType="9" Precision="10" />
+                    <Field Name="tour_operator_id" Ordinal="8" IsOptional="true" DbType="9" Precision="10" />
+                    <Field Name="object_status" Ordinal="9" HasDefaultValue="true" DefaultValue="1" DbType="9" Precision="10" />
+                  </Fields>
+                </Table>
+              </Tables>
+            </Schema>
+          </Schemas>
+          <ForeignKeyConstraints>
+            <ForeignKeyConstraint Name="public:amenity:FK_amenity_airline_id_airline_id">
+              <FieldPairs>
+                <FieldPair PkField="public:airline:id" FkField="public:amenity:airline_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:amenity_feedback:FK_amenity_feedback_passenger_id_passenger_id">
+              <FieldPairs>
+                <FieldPair PkField="public:passenger:id" FkField="public:amenity_feedback:passenger_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:amenity_feedback:FK_amenity_feedback_route_amenity_id_route_amenity_id">
+              <FieldPairs>
+                <FieldPair PkField="public:route_amenity:id" FkField="public:amenity_feedback:route_amenity_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:flight:FK_flight_flight_route_id_flight_route_id">
+              <FieldPairs>
+                <FieldPair PkField="public:flight_route:id" FkField="public:flight:flight_route_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:flight:FK_flight_tour_operator_id_tour_operator_id">
+              <FieldPairs>
+                <FieldPair PkField="public:tour_operator:id" FkField="public:flight:tour_operator_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:flight_route:FK_flight_route_airline_id_airline_id">
+              <FieldPairs>
+                <FieldPair PkField="public:airline:id" FkField="public:flight_route:airline_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:passenger:FK_passenger_flight_id_flight_id">
+              <FieldPairs>
+                <FieldPair PkField="public:flight:id" FkField="public:passenger:flight_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:passenger:FK_passenger_person_id_person_id">
+              <FieldPairs>
+                <FieldPair PkField="public:person:id" FkField="public:passenger:person_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:passenger_amenity_selection:FK_passenger_amenity_selection_passenger_id_passenger_id">
+              <FieldPairs>
+                <FieldPair PkField="public:passenger:id" FkField="public:passenger_amenity_selection:passenger_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:passenger_amenity_selection:FK_passenger_amenity_selection_route_amenity_id_route_amenity_i">
+              <FieldPairs>
+                <FieldPair PkField="public:route_amenity:id" FkField="public:passenger_amenity_selection:route_amenity_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:route_amenity:FK_route_amenity_amenity_id_amenity_id">
+              <FieldPairs>
+                <FieldPair PkField="public:amenity:id" FkField="public:route_amenity:amenity_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:route_amenity:FK_route_amenity_flight_route_id_flight_route_id">
+              <FieldPairs>
+                <FieldPair PkField="public:flight_route:id" FkField="public:route_amenity:flight_route_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:route_flight_feedback:FK_route_flight_feedback_flight_id_flight_id">
+              <FieldPairs>
+                <FieldPair PkField="public:flight:id" FkField="public:route_flight_feedback:flight_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:route_flight_feedback:FK_route_flight_feedback_passenger_id_passenger_id">
+              <FieldPairs>
+                <FieldPair PkField="public:passenger:id" FkField="public:route_flight_feedback:passenger_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:tour_operator_airline:FK_tour_operator_airline_airline_id_airline_id">
+              <FieldPairs>
+                <FieldPair PkField="public:airline:id" FkField="public:tour_operator_airline:airline_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:tour_operator_airline:FK_tour_operator_airline_tour_operator_id_tour_operator_id">
+              <FieldPairs>
+                <FieldPair PkField="public:tour_operator:id" FkField="public:tour_operator_airline:tour_operator_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:user:FK_user_airline_id_airline_id">
+              <FieldPairs>
+                <FieldPair PkField="public:airline:id" FkField="public:user:airline_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:user:FK_user_person_id_person_id">
+              <FieldPairs>
+                <FieldPair PkField="public:person:id" FkField="public:user:person_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:user:FK_user_role_id_role_id">
+              <FieldPairs>
+                <FieldPair PkField="public:role:id" FkField="public:user:role_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="public:user:FK_user_tour_operator_id_tour_operator_id">
+              <FieldPairs>
+                <FieldPair PkField="public:tour_operator:id" FkField="public:user:tour_operator_id" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+          </ForeignKeyConstraints>
+        </Catalog>
+      </Catalogs>
+    </TargetDatabase>
+  </TargetDatabases>
+  <MappingStores>
+    <MappingStore Type="88EBFD8C-CBDD-4452-88AF-1C99E41A123F">
+      <EntityMappings>
+        <EntityMapping EntityName=":Airline" TargetName="charcillaries:public:airline">
+          <FieldMappings>
+            <FieldMapping FieldName="ContactInfo" TargetFieldName="contact_info" />
+            <FieldMapping FieldName="Email" TargetFieldName="email" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="Name" TargetFieldName="name" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Amenity" TargetName="charcillaries:public:amenity">
+          <FieldMappings>
+            <FieldMapping FieldName="AirlineId" TargetFieldName="airline_id" />
+            <FieldMapping FieldName="Description" TargetFieldName="description" />
+            <FieldMapping FieldName="Icon" TargetFieldName="icon" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="Name" TargetFieldName="name" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":AmenityFeedback" TargetName="charcillaries:public:amenity_feedback">
+          <FieldMappings>
+            <FieldMapping FieldName="Comment" TargetFieldName="comment" />
+            <FieldMapping FieldName="DateCreated" TargetFieldName="date_created" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="PassengerId" TargetFieldName="passenger_id" />
+            <FieldMapping FieldName="Rating" TargetFieldName="rating" />
+            <FieldMapping FieldName="RouteAmenityId" TargetFieldName="route_amenity_id" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Flight" TargetName="charcillaries:public:flight">
+          <FieldMappings>
+            <FieldMapping FieldName="ArrivalDate" TargetFieldName="arrival_date" />
+            <FieldMapping FieldName="DepartureDate" TargetFieldName="departure_date" />
+            <FieldMapping FieldName="FlightNumber" TargetFieldName="flight_number" />
+            <FieldMapping FieldName="FlightRouteId" TargetFieldName="flight_route_id" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="NumberOfSeats" TargetFieldName="number_of_seats" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="TourOperatorId" TargetFieldName="tour_operator_id" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":FlightRoute" TargetName="charcillaries:public:flight_route">
+          <FieldMappings>
+            <FieldMapping FieldName="AirlineId" TargetFieldName="airline_id" />
+            <FieldMapping FieldName="ArrivalAirport" TargetFieldName="arrival_airport" />
+            <FieldMapping FieldName="DepartureAirport" TargetFieldName="departure_airport" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Passenger" TargetName="charcillaries:public:passenger">
+          <FieldMappings>
+            <FieldMapping FieldName="FlightId" TargetFieldName="flight_id" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="PaymentAmount" TargetFieldName="payment_amount" />
+            <FieldMapping FieldName="PaymentConfirmation" TargetFieldName="payment_confirmation" />
+            <FieldMapping FieldName="PaymentConfirmationDate" TargetFieldName="payment_confirmation_date" />
+            <FieldMapping FieldName="PersonId" TargetFieldName="person_id" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":PassengerAmenitySelection" TargetName="charcillaries:public:passenger_amenity_selection">
+          <FieldMappings>
+            <FieldMapping FieldName="Confirmed" TargetFieldName="confirmed" />
+            <FieldMapping FieldName="Customization" TargetFieldName="customization" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="PassengerId" TargetFieldName="passenger_id" />
+            <FieldMapping FieldName="Quantity" TargetFieldName="quantity" />
+            <FieldMapping FieldName="RouteAmenityId" TargetFieldName="route_amenity_id" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Person" TargetName="charcillaries:public:person">
+          <FieldMappings>
+            <FieldMapping FieldName="Email" TargetFieldName="email" />
+            <FieldMapping FieldName="FirstName" TargetFieldName="first_name" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="LastName" TargetFieldName="last_name" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="PassportNumber" TargetFieldName="passport_number" />
+            <FieldMapping FieldName="PhoneNumber" TargetFieldName="phone_number" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Role" TargetName="charcillaries:public:role">
+          <FieldMappings>
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="Name" TargetFieldName="name" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":RouteAmenity" TargetName="charcillaries:public:route_amenity">
+          <FieldMappings>
+            <FieldMapping FieldName="AmenityId" TargetFieldName="amenity_id" />
+            <FieldMapping FieldName="FlightRouteId" TargetFieldName="flight_route_id" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="Price" TargetFieldName="price" />
+            <FieldMapping FieldName="Quantity" TargetFieldName="quantity" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":RouteFlightFeedback" TargetName="charcillaries:public:route_flight_feedback">
+          <FieldMappings>
+            <FieldMapping FieldName="Comment" TargetFieldName="comment" />
+            <FieldMapping FieldName="DateCreated" TargetFieldName="date_created" />
+            <FieldMapping FieldName="FlightId" TargetFieldName="flight_id" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="PassengerId" TargetFieldName="passenger_id" />
+            <FieldMapping FieldName="Rating" TargetFieldName="rating" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TourOperator" TargetName="charcillaries:public:tour_operator">
+          <FieldMappings>
+            <FieldMapping FieldName="ContactInfo" TargetFieldName="contact_info" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="Name" TargetFieldName="name" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TourOperatorAirline" TargetName="charcillaries:public:tour_operator_airline">
+          <FieldMappings>
+            <FieldMapping FieldName="AirlineId" TargetFieldName="airline_id" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="TourOperatorId" TargetFieldName="tour_operator_id" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":User" TargetName="charcillaries:public:user">
+          <FieldMappings>
+            <FieldMapping FieldName="AirlineId" TargetFieldName="airline_id" />
+            <FieldMapping FieldName="Id" TargetFieldName="id" SequenceToUse="SystemIdentity" />
+            <FieldMapping FieldName="ObjectStatus" TargetFieldName="object_status" />
+            <FieldMapping FieldName="Password" TargetFieldName="password" />
+            <FieldMapping FieldName="PersonId" TargetFieldName="person_id" />
+            <FieldMapping FieldName="ResetToken" TargetFieldName="reset_token" />
+            <FieldMapping FieldName="ResetTokenExpiration" TargetFieldName="reset_token_expiration" />
+            <FieldMapping FieldName="RoleId" TargetFieldName="role_id" />
+            <FieldMapping FieldName="TourOperatorId" TargetFieldName="tour_operator_id" />
+          </FieldMappings>
+        </EntityMapping>
+      </EntityMappings>
+      <TypedViewMappings />
+      <SPCallMappings />
+      <TvfCallMappings />
+      <TypeConversionDefinitions />
+    </MappingStore>
+  </MappingStores>
+  <ModelViews />
+  <DerivedModels>
+    <DerivedModel Name="Views" ObjectID="fec8c1a2-1888-4be1-96a9-1c3d4f54518a" TargetFrameworkName="DTO Class Model" UseLegacyDefaults="false">
+      <CodeGenerationMetaDataDefaults>
+        <TargetElement Type="32768">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="Serializable" />
+              <Attribute Value="DataContract" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="65536">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="Serializable" />
+              <Attribute Value="DataContract" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="131072">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="262144">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+        <TargetElement Type="524288">
+          <Defaults>
+            <Attributes>
+              <Attribute Value="DataMember" />
+            </Attributes>
+          </Defaults>
+        </TargetElement>
+      </CodeGenerationMetaDataDefaults>
+      <Settings>
+        <Property Name="DerivedElementClassNameSuffix" Value="" />
+        <Property Name="PrefixDenormalizedFieldsWithNavigatorName" Value="true" />
+        <Property Name="SyncDerivedElementNamesWithSourceElementNames" Value="false" />
+      </Settings>
+      <CodeGenerationCyclePreferences OutputType="3">
+        <LastUsedPreferences>
+          <DestinationRootFolder Value=".\Code" />
+          <FrameworkName Value="DTO Class Model" />
+          <LanguageName Value="C#" />
+          <PlatformName Value=".NET Standard 2.1" />
+          <PresetName Value="SD.DTOClasses.ReadOnlyDTOs" />
+          <RootNamespace Value="Charcillaries.Data.Views" />
+          <TemplateGroup Value="General" />
+          <TemplateBindings>
+            <Binding Name="SD.DTOClassModel.NETStandard21" />
+            <Binding Name="SD.DTOClassModel" />
+            <Binding Name="SD.TemplateBindings.General" />
+          </TemplateBindings>
+          <AdhocTemplateSets />
+        </LastUsedPreferences>
+      </CodeGenerationCyclePreferences>
+      <Documents>
+        <Document Name="AirlineDetailsView">
+          <RootEntity Entity=":Airline" />
+          <Fields>
+            <Field Name="Amenities">
+              <Document Name="Amenity">
+                <RootEntity Entity=":Amenity" NavigatorPath="Amenities" />
+                <Fields>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="ContactInfo">
+              <EntityField Name="ContactInfo" />
+            </Field>
+            <Field Name="Email">
+              <EntityField Name="Email" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Name">
+              <EntityField Name="Name" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="AirlineListView">
+          <RootEntity Entity=":Airline" />
+          <Fields>
+            <Field Name="ContactInfo">
+              <EntityField Name="ContactInfo" />
+            </Field>
+            <Field Name="Email">
+              <EntityField Name="Email" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Name">
+              <EntityField Name="Name" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="AmenitiesDetailsView">
+          <RootEntity Entity=":Amenity" />
+          <Fields>
+            <Field Name="Airline">
+              <Document Name="Airline">
+                <RootEntity Entity=":Airline" NavigatorPath="Airline" />
+                <Fields>
+                  <Field Name="ContactInfo">
+                    <EntityField Name="ContactInfo" />
+                  </Field>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="AirlineId">
+              <EntityField Name="AirlineId" />
+            </Field>
+            <Field Name="Description">
+              <EntityField Name="Description" />
+            </Field>
+            <Field Name="Icon">
+              <EntityField Name="Icon" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Name">
+              <EntityField Name="Name" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="RouteAmenities">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities" />
+                <Fields>
+                  <Field Name="AmenityFeedbacks">
+                    <Document Name="AmenityFeedback">
+                      <RootEntity Entity=":AmenityFeedback" NavigatorPath="RouteAmenities,AmenityFeedbacks" />
+                      <Fields>
+                        <Field Name="Comment">
+                          <EntityField Name="Comment" />
+                        </Field>
+                        <Field Name="DateCreated">
+                          <EntityField Name="DateCreated" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Rating">
+                          <EntityField Name="Rating" />
+                        </Field>
+                        <Field Name="RouteAmenity">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities,AmenityFeedbacks,RouteAmenity" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="RouteAmenityId">
+                          <EntityField Name="RouteAmenityId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassengerAmenitySelections">
+                    <Document Name="PassengerAmenitySelection">
+                      <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="RouteAmenities,PassengerAmenitySelections" />
+                      <Fields>
+                        <Field Name="Confirmed">
+                          <EntityField Name="Confirmed" />
+                        </Field>
+                        <Field Name="Customization">
+                          <EntityField Name="Customization" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Quantity">
+                          <EntityField Name="Quantity" />
+                        </Field>
+                        <Field Name="RouteAmenityId">
+                          <EntityField Name="RouteAmenityId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Price">
+                    <EntityField Name="Price" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="AmenitiesListView">
+          <RootEntity Entity=":Amenity" />
+          <Fields>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Name">
+              <EntityField Name="Name" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="RouteAmenities">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities" />
+                <Fields>
+                  <Field Name="AmenityFeedbacks">
+                    <Document Name="AmenityFeedback">
+                      <RootEntity Entity=":AmenityFeedback" NavigatorPath="RouteAmenities,AmenityFeedbacks" />
+                      <Fields>
+                        <Field Name="Comment">
+                          <EntityField Name="Comment" />
+                        </Field>
+                        <Field Name="DateCreated">
+                          <EntityField Name="DateCreated" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Rating">
+                          <EntityField Name="Rating" />
+                        </Field>
+                        <Field Name="RouteAmenity">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities,AmenityFeedbacks,RouteAmenity" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="RouteAmenityId">
+                          <EntityField Name="RouteAmenityId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassengerAmenitySelections">
+                    <Document Name="PassengerAmenitySelection">
+                      <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="RouteAmenities,PassengerAmenitySelections" />
+                      <Fields>
+                        <Field Name="Confirmed">
+                          <EntityField Name="Confirmed" />
+                        </Field>
+                        <Field Name="Customization">
+                          <EntityField Name="Customization" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Quantity">
+                          <EntityField Name="Quantity" />
+                        </Field>
+                        <Field Name="RouteAmenity">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities,PassengerAmenitySelections,RouteAmenity" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Price">
+                    <EntityField Name="Price" />
+                  </Field>
+                  <Field Name="Quantity">
+                    <EntityField Name="Quantity" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="AmenityFeedbackDetailsView">
+          <RootEntity Entity=":AmenityFeedback" />
+          <Fields>
+            <Field Name="AmenityId">
+              <EntityField Name="RouteAmenityId" />
+            </Field>
+            <Field Name="Comment">
+              <EntityField Name="Comment" />
+            </Field>
+            <Field Name="DateCreated">
+              <EntityField Name="DateCreated" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Passenger">
+              <Document Name="Passenger">
+                <RootEntity Entity=":Passenger" NavigatorPath="Passenger" />
+                <Fields>
+                  <Field Name="Flight">
+                    <Document Name="Flight">
+                      <RootEntity Entity=":Flight" NavigatorPath="Passenger,Flight" />
+                      <Fields>
+                        <Field Name="ArrivalDate">
+                          <EntityField Name="ArrivalDate" />
+                        </Field>
+                        <Field Name="DepartureDate">
+                          <EntityField Name="DepartureDate" />
+                        </Field>
+                        <Field Name="FlightNumber">
+                          <EntityField Name="FlightNumber" />
+                        </Field>
+                        <Field Name="FlightRouteId">
+                          <EntityField Name="FlightRouteId" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="NumberOfSeats">
+                          <EntityField Name="NumberOfSeats" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="TourOperatorId">
+                          <EntityField Name="TourOperatorId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Person">
+                    <Document Name="Person">
+                      <RootEntity Entity=":Person" NavigatorPath="Passenger,Person" />
+                      <Fields>
+                        <Field Name="FirstName">
+                          <EntityField Name="FirstName" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="LastName">
+                          <EntityField Name="LastName" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PassengerId">
+              <EntityField Name="PassengerId" />
+            </Field>
+            <Field Name="Rating">
+              <EntityField Name="Rating" />
+            </Field>
+            <Field Name="RouteAmenity">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenity" />
+                <Fields>
+                  <Field Name="Amenity">
+                    <Document Name="Amenity">
+                      <RootEntity Entity=":Amenity" NavigatorPath="RouteAmenity,Amenity" />
+                      <Fields>
+                        <Field Name="AirlineId">
+                          <EntityField Name="AirlineId" />
+                        </Field>
+                        <Field Name="Description">
+                          <EntityField Name="Description" />
+                        </Field>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="AmenityFeedbackMinimalView">
+          <RootEntity Entity=":AmenityFeedback" />
+          <Fields>
+            <Field Name="AmenityId">
+              <EntityField Name="RouteAmenityId" />
+            </Field>
+            <Field Name="Comment">
+              <EntityField Name="Comment" />
+            </Field>
+            <Field Name="Rating">
+              <EntityField Name="Rating" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="FlightDetailsView">
+          <RootEntity Entity=":Flight" />
+          <Fields>
+            <Field Name="ArrivalDate">
+              <EntityField Name="ArrivalDate" />
+            </Field>
+            <Field Name="DepartureDate">
+              <EntityField Name="DepartureDate" />
+            </Field>
+            <Field Name="FlightNumber">
+              <EntityField Name="FlightNumber" />
+            </Field>
+            <Field Name="FlightRoute">
+              <Document Name="FlightRoute">
+                <RootEntity Entity=":FlightRoute" NavigatorPath="FlightRoute" />
+                <Fields>
+                  <Field Name="AirlineId">
+                    <EntityField Name="AirlineId" />
+                  </Field>
+                  <Field Name="ArrivalAirport">
+                    <EntityField Name="ArrivalAirport" />
+                  </Field>
+                  <Field Name="DepartureAirport">
+                    <EntityField Name="DepartureAirport" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="NumberOfSeats">
+              <EntityField Name="NumberOfSeats" />
+            </Field>
+            <Field Name="TourOperator">
+              <Document Name="TourOperator">
+                <RootEntity Entity=":TourOperator" NavigatorPath="TourOperator" />
+                <Fields>
+                  <Field Name="ContactInfo">
+                    <EntityField Name="ContactInfo" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="TourOperatorId">
+              <EntityField Name="TourOperatorId" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="FlightListView">
+          <RootEntity Entity=":Flight" />
+          <Fields>
+            <Field Name="ArrivalDate">
+              <EntityField Name="ArrivalDate" />
+            </Field>
+            <Field Name="DepartureDate">
+              <EntityField Name="DepartureDate" />
+            </Field>
+            <Field Name="FlightNumber">
+              <EntityField Name="FlightNumber" />
+            </Field>
+            <Field Name="FlightRoute">
+              <Document Name="FlightRoute">
+                <RootEntity Entity=":FlightRoute" NavigatorPath="FlightRoute" />
+                <Fields>
+                  <Field Name="AirlineId">
+                    <EntityField Name="AirlineId" />
+                  </Field>
+                  <Field Name="ArrivalAirport">
+                    <EntityField Name="ArrivalAirport" />
+                  </Field>
+                  <Field Name="DepartureAirport">
+                    <EntityField Name="DepartureAirport" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="NumberOfSeats">
+              <EntityField Name="NumberOfSeats" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="FlightPassengersDetailsView">
+          <RootEntity Entity=":Flight" />
+          <Fields>
+            <Field Name="ArrivalDate">
+              <EntityField Name="ArrivalDate" />
+            </Field>
+            <Field Name="DepartureDate">
+              <EntityField Name="DepartureDate" />
+            </Field>
+            <Field Name="FlightNumber">
+              <EntityField Name="FlightNumber" />
+            </Field>
+            <Field Name="FlightRoute">
+              <Document Name="FlightRoute">
+                <RootEntity Entity=":FlightRoute" NavigatorPath="FlightRoute" />
+                <Fields>
+                  <Field Name="ArrivalAirport">
+                    <EntityField Name="ArrivalAirport" />
+                  </Field>
+                  <Field Name="DepartureAirport">
+                    <EntityField Name="DepartureAirport" />
+                  </Field>
+                  <Field Name="RouteAmenities">
+                    <Document Name="RouteAmenity">
+                      <RootEntity Entity=":RouteAmenity" NavigatorPath="FlightRoute,RouteAmenities" />
+                      <Fields>
+                        <Field Name="Amenity">
+                          <Document Name="Amenity">
+                            <RootEntity Entity=":Amenity" NavigatorPath="FlightRoute,RouteAmenities,Amenity" />
+                            <Fields>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="Name">
+                                <EntityField Name="Name" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="Price">
+                          <EntityField Name="Price" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Passengers">
+              <Document Name="Passenger">
+                <RootEntity Entity=":Passenger" NavigatorPath="Passengers" />
+                <Fields>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="PassengerAmenitySelections">
+                    <Document Name="PassengerAmenitySelection">
+                      <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="Passengers,PassengerAmenitySelections" />
+                      <Fields>
+                        <Field Name="Customization">
+                          <EntityField Name="Customization" />
+                        </Field>
+                        <Field Name="RouteAmenity">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="Passengers,PassengerAmenitySelections,RouteAmenity" />
+                            <Fields>
+                              <Field Name="Amenity">
+                                <Document Name="Amenity">
+                                  <RootEntity Entity=":Amenity" NavigatorPath="Passengers,PassengerAmenitySelections,RouteAmenity,Amenity" />
+                                  <Fields>
+                                    <Field Name="Name">
+                                      <EntityField Name="Name" />
+                                    </Field>
+                                  </Fields>
+                                </Document>
+                              </Field>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="PaymentConfirmation">
+                    <EntityField Name="PaymentConfirmation" />
+                  </Field>
+                  <Field Name="Person">
+                    <Document Name="Person">
+                      <RootEntity Entity=":Person" NavigatorPath="Passengers,Person" />
+                      <Fields>
+                        <Field Name="Email">
+                          <EntityField Name="Email" />
+                        </Field>
+                        <Field Name="FirstName">
+                          <EntityField Name="FirstName" />
+                        </Field>
+                        <Field Name="LastName">
+                          <EntityField Name="LastName" />
+                        </Field>
+                        <Field Name="PhoneNumber">
+                          <EntityField Name="PhoneNumber" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="TourOperator">
+              <Document Name="TourOperator">
+                <RootEntity Entity=":TourOperator" NavigatorPath="TourOperator" />
+                <Fields>
+                  <Field Name="ContactInfo">
+                    <EntityField Name="ContactInfo" />
+                  </Field>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="FlightRouteDetailsView">
+          <RootEntity Entity=":FlightRoute" />
+          <Fields>
+            <Field Name="AirlineId">
+              <EntityField Name="AirlineId" />
+            </Field>
+            <Field Name="ArrivalAirport">
+              <EntityField Name="ArrivalAirport" />
+            </Field>
+            <Field Name="DepartureAirport">
+              <EntityField Name="DepartureAirport" />
+            </Field>
+            <Field Name="Flights">
+              <Document Name="Flight">
+                <RootEntity Entity=":Flight" NavigatorPath="Flights" />
+                <Fields>
+                  <Field Name="ArrivalDate">
+                    <EntityField Name="ArrivalDate" />
+                  </Field>
+                  <Field Name="DepartureDate">
+                    <EntityField Name="DepartureDate" />
+                  </Field>
+                  <Field Name="FlightNumber">
+                    <EntityField Name="FlightNumber" />
+                  </Field>
+                  <Field Name="TourOperator">
+                    <Document Name="TourOperator">
+                      <RootEntity Entity=":TourOperator" NavigatorPath="Flights,TourOperator" />
+                      <Fields>
+                        <Field Name="ContactInfo">
+                          <EntityField Name="ContactInfo" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="RouteAmenities">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities" />
+                <Fields>
+                  <Field Name="Amenity">
+                    <Document Name="Amenity">
+                      <RootEntity Entity=":Amenity" NavigatorPath="RouteAmenities,Amenity" />
+                      <Fields>
+                        <Field Name="Description">
+                          <EntityField Name="Description" />
+                        </Field>
+                        <Field Name="Icon">
+                          <EntityField Name="Icon" />
+                        </Field>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="Price">
+                    <EntityField Name="Price" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="FlightRouteListView">
+          <RootEntity Entity=":FlightRoute" />
+          <Fields>
+            <Field Name="ArrivalAirport">
+              <EntityField Name="ArrivalAirport" />
+            </Field>
+            <Field Name="DepartureAirport">
+              <EntityField Name="DepartureAirport" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="RouteAmenities">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenities" />
+                <Fields>
+                  <Field Name="Amenity">
+                    <Document Name="Amenity">
+                      <RootEntity Entity=":Amenity" NavigatorPath="RouteAmenities,Amenity" />
+                      <Fields>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="Price">
+                    <EntityField Name="Price" />
+                  </Field>
+                  <Field Name="Quantity">
+                    <EntityField Name="Quantity" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengerAmenityDetailsView">
+          <RootEntity Entity=":PassengerAmenitySelection" />
+          <Fields>
+            <Field Name="AmenityId">
+              <EntityField Name="RouteAmenityId" />
+            </Field>
+            <Field Name="Customization">
+              <EntityField Name="Customization" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="Passenger">
+              <Document Name="Passenger">
+                <RootEntity Entity=":Passenger" NavigatorPath="Passenger" />
+                <Fields>
+                  <Field Name="Flight">
+                    <Document Name="Flight">
+                      <RootEntity Entity=":Flight" NavigatorPath="Passenger,Flight" />
+                      <Fields>
+                        <Field Name="ArrivalDate">
+                          <EntityField Name="ArrivalDate" />
+                        </Field>
+                        <Field Name="DepartureDate">
+                          <EntityField Name="DepartureDate" />
+                        </Field>
+                        <Field Name="FlightNumber">
+                          <EntityField Name="FlightNumber" />
+                        </Field>
+                        <Field Name="FlightRouteId">
+                          <EntityField Name="FlightRouteId" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="NumberOfSeats">
+                          <EntityField Name="NumberOfSeats" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="TourOperatorId">
+                          <EntityField Name="TourOperatorId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="FlightId">
+                    <EntityField Name="FlightId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="PersonId">
+                    <EntityField Name="PersonId" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PassengerId">
+              <EntityField Name="PassengerId" />
+            </Field>
+            <Field Name="Quantity">
+              <EntityField Name="Quantity" />
+            </Field>
+            <Field Name="RouteAmenity">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenity" />
+                <Fields>
+                  <Field Name="Amenity">
+                    <Document Name="Amenity">
+                      <RootEntity Entity=":Amenity" NavigatorPath="RouteAmenity,Amenity" />
+                      <Fields>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengerAmenityListView">
+          <RootEntity Entity=":PassengerAmenitySelection" />
+          <Fields>
+            <Field Name="AmenityId">
+              <EntityField Name="RouteAmenityId" />
+            </Field>
+            <Field Name="Confirmed">
+              <EntityField Name="Confirmed" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="Passenger">
+              <Document Name="Passenger">
+                <RootEntity Entity=":Passenger" NavigatorPath="Passenger" />
+                <Fields>
+                  <Field Name="Flight">
+                    <Document Name="Flight">
+                      <RootEntity Entity=":Flight" NavigatorPath="Passenger,Flight" />
+                      <Fields>
+                        <Field Name="ArrivalDate">
+                          <EntityField Name="ArrivalDate" />
+                        </Field>
+                        <Field Name="DepartureDate">
+                          <EntityField Name="DepartureDate" />
+                        </Field>
+                        <Field Name="FlightNumber">
+                          <EntityField Name="FlightNumber" />
+                        </Field>
+                        <Field Name="FlightRoute">
+                          <Document Name="FlightRoute">
+                            <RootEntity Entity=":FlightRoute" NavigatorPath="Passenger,Flight,FlightRoute" />
+                            <Fields>
+                              <Field Name="AirlineId">
+                                <EntityField Name="AirlineId" />
+                              </Field>
+                              <Field Name="ArrivalAirport">
+                                <EntityField Name="ArrivalAirport" />
+                              </Field>
+                              <Field Name="DepartureAirport">
+                                <EntityField Name="DepartureAirport" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="FlightRouteId">
+                          <EntityField Name="FlightRouteId" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="NumberOfSeats">
+                          <EntityField Name="NumberOfSeats" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="TourOperatorId">
+                          <EntityField Name="TourOperatorId" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="PassengerAmenitySelections">
+                    <Document Name="PassengerAmenitySelection">
+                      <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="Passenger,PassengerAmenitySelections" />
+                      <Fields>
+                        <Field Name="AmenityId">
+                          <EntityField Name="RouteAmenityId" />
+                        </Field>
+                        <Field Name="Confirmed">
+                          <EntityField Name="Confirmed" />
+                        </Field>
+                        <Field Name="Customization">
+                          <EntityField Name="Customization" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Quantity">
+                          <EntityField Name="Quantity" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Person">
+                    <Document Name="Person">
+                      <RootEntity Entity=":Person" NavigatorPath="Passenger,Person" />
+                      <Fields>
+                        <Field Name="Email">
+                          <EntityField Name="Email" />
+                        </Field>
+                        <Field Name="FirstName">
+                          <EntityField Name="FirstName" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="LastName">
+                          <EntityField Name="LastName" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassportNumber">
+                          <EntityField Name="PassportNumber" />
+                        </Field>
+                        <Field Name="PhoneNumber">
+                          <EntityField Name="PhoneNumber" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PassengerId">
+              <EntityField Name="PassengerId" />
+            </Field>
+            <Field Name="Quantity">
+              <EntityField Name="Quantity" />
+            </Field>
+            <Field Name="RouteAmenity">
+              <Document Name="RouteAmenity">
+                <RootEntity Entity=":RouteAmenity" NavigatorPath="RouteAmenity" />
+                <Fields>
+                  <Field Name="Amenity">
+                    <Document Name="Amenity">
+                      <RootEntity Entity=":Amenity" NavigatorPath="RouteAmenity,Amenity" />
+                      <Fields>
+                        <Field Name="Name">
+                          <EntityField Name="Name" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="AmenityId">
+                    <EntityField Name="AmenityId" />
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="Price">
+                    <EntityField Name="Price" />
+                  </Field>
+                  <Field Name="Quantity">
+                    <EntityField Name="Quantity" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengerFlightDetailsView">
+          <RootEntity Entity=":Passenger" />
+          <Fields>
+            <Field Name="Flight">
+              <Document Name="Flight">
+                <RootEntity Entity=":Flight" NavigatorPath="Flight" />
+                <Fields>
+                  <Field Name="ArrivalDate">
+                    <EntityField Name="ArrivalDate" />
+                  </Field>
+                  <Field Name="DepartureDate">
+                    <EntityField Name="DepartureDate" />
+                  </Field>
+                  <Field Name="FlightNumber">
+                    <EntityField Name="FlightNumber" />
+                  </Field>
+                  <Field Name="FlightRoute">
+                    <Document Name="FlightRoute">
+                      <RootEntity Entity=":FlightRoute" NavigatorPath="Flight,FlightRoute" />
+                      <Fields>
+                        <Field Name="Airline">
+                          <Document Name="Airline">
+                            <RootEntity Entity=":Airline" NavigatorPath="Flight,FlightRoute,Airline" />
+                            <Fields>
+                              <Field Name="Name">
+                                <EntityField Name="Name" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="AirlineId">
+                          <EntityField Name="AirlineId" />
+                        </Field>
+                        <Field Name="ArrivalAirport">
+                          <EntityField Name="ArrivalAirport" />
+                        </Field>
+                        <Field Name="DepartureAirport">
+                          <EntityField Name="DepartureAirport" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="RouteAmenities">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="Flight,FlightRoute,RouteAmenities" />
+                            <Fields>
+                              <Field Name="Amenity">
+                                <Document Name="Amenity">
+                                  <RootEntity Entity=":Amenity" NavigatorPath="Flight,FlightRoute,RouteAmenities,Amenity" />
+                                  <Fields>
+                                    <Field Name="Name">
+                                      <EntityField Name="Name" />
+                                    </Field>
+                                  </Fields>
+                                </Document>
+                              </Field>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                              <Field Name="FlightRouteId">
+                                <EntityField Name="FlightRouteId" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="Price">
+                                <EntityField Name="Price" />
+                              </Field>
+                              <Field Name="Quantity">
+                                <EntityField Name="Quantity" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="NumberOfSeats">
+                    <EntityField Name="NumberOfSeats" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="TourOperator">
+                    <Document Name="TourOperator">
+                      <RootEntity Entity=":TourOperator" NavigatorPath="Flight,TourOperator" />
+                      <Fields>
+                        <Field Name="ContactInfo">
+                          <EntityField Name="ContactInfo" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="TourOperatorId">
+                    <EntityField Name="TourOperatorId" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="PassengerAmenitySelections">
+              <Document Name="PassengerAmenitySelection">
+                <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="PassengerAmenitySelections" />
+                <Fields>
+                  <Field Name="AmenityId">
+                    <EntityField Name="RouteAmenityId" />
+                  </Field>
+                  <Field Name="Confirmed">
+                    <EntityField Name="Confirmed" />
+                  </Field>
+                  <Field Name="Customization">
+                    <EntityField Name="Customization" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassengerId">
+                    <EntityField Name="PassengerId" />
+                  </Field>
+                  <Field Name="Quantity">
+                    <EntityField Name="Quantity" />
+                  </Field>
+                  <Field Name="RouteAmenity">
+                    <Document Name="RouteAmenity">
+                      <RootEntity Entity=":RouteAmenity" NavigatorPath="PassengerAmenitySelections,RouteAmenity" />
+                      <Fields>
+                        <Field Name="Amenity">
+                          <Document Name="Amenity">
+                            <RootEntity Entity=":Amenity" NavigatorPath="PassengerAmenitySelections,RouteAmenity,Amenity" />
+                            <Fields>
+                              <Field Name="Name">
+                                <EntityField Name="Name" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PaymentAmount">
+              <EntityField Name="PaymentAmount" />
+            </Field>
+            <Field Name="PaymentConfirmation">
+              <EntityField Name="PaymentConfirmation" />
+            </Field>
+            <Field Name="PaymentConfirmationDate">
+              <EntityField Name="PaymentConfirmationDate" />
+            </Field>
+            <Field Name="Person">
+              <Document Name="Person">
+                <RootEntity Entity=":Person" NavigatorPath="Person" />
+                <Fields>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                  <Field Name="FirstName">
+                    <EntityField Name="FirstName" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="LastName">
+                    <EntityField Name="LastName" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassportNumber">
+                    <EntityField Name="PassportNumber" />
+                  </Field>
+                  <Field Name="PhoneNumber">
+                    <EntityField Name="PhoneNumber" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengerFlightListView">
+          <RootEntity Entity=":Passenger" />
+          <Fields>
+            <Field Name="Flight">
+              <Document Name="Flight">
+                <RootEntity Entity=":Flight" NavigatorPath="Flight" />
+                <Fields>
+                  <Field Name="ArrivalDate">
+                    <EntityField Name="ArrivalDate" />
+                  </Field>
+                  <Field Name="DepartureDate">
+                    <EntityField Name="DepartureDate" />
+                  </Field>
+                  <Field Name="FlightNumber">
+                    <EntityField Name="FlightNumber" />
+                  </Field>
+                  <Field Name="FlightRoute">
+                    <Document Name="FlightRoute">
+                      <RootEntity Entity=":FlightRoute" NavigatorPath="Flight,FlightRoute" />
+                      <Fields>
+                        <Field Name="Airline">
+                          <Document Name="Airline">
+                            <RootEntity Entity=":Airline" NavigatorPath="Flight,FlightRoute,Airline" />
+                            <Fields>
+                              <Field Name="Name">
+                                <EntityField Name="Name" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="AirlineId">
+                          <EntityField Name="AirlineId" />
+                        </Field>
+                        <Field Name="ArrivalAirport">
+                          <EntityField Name="ArrivalAirport" />
+                        </Field>
+                        <Field Name="DepartureAirport">
+                          <EntityField Name="DepartureAirport" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="RouteAmenities">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="Flight,FlightRoute,RouteAmenities" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                              <Field Name="FlightRouteId">
+                                <EntityField Name="FlightRouteId" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="Price">
+                                <EntityField Name="Price" />
+                              </Field>
+                              <Field Name="Quantity">
+                                <EntityField Name="Quantity" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="FlightRouteId">
+                    <EntityField Name="FlightRouteId" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="NumberOfSeats">
+                    <EntityField Name="NumberOfSeats" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="TourOperatorId">
+                    <EntityField Name="TourOperatorId" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="PassengerAmenitySelections">
+              <Document Name="PassengerAmenitySelection">
+                <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="PassengerAmenitySelections" />
+                <Fields>
+                  <Field Name="AmenityId">
+                    <EntityField Name="RouteAmenityId" />
+                  </Field>
+                  <Field Name="Confirmed">
+                    <EntityField Name="Confirmed" />
+                  </Field>
+                  <Field Name="Customization">
+                    <EntityField Name="Customization" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassengerId">
+                    <EntityField Name="PassengerId" />
+                  </Field>
+                  <Field Name="Quantity">
+                    <EntityField Name="Quantity" />
+                  </Field>
+                  <Field Name="RouteAmenity">
+                    <Document Name="RouteAmenity">
+                      <RootEntity Entity=":RouteAmenity" NavigatorPath="PassengerAmenitySelections,RouteAmenity" />
+                      <Fields>
+                        <Field Name="Amenity">
+                          <Document Name="Amenity">
+                            <RootEntity Entity=":Amenity" NavigatorPath="PassengerAmenitySelections,RouteAmenity,Amenity" />
+                            <Fields>
+                              <Field Name="Name">
+                                <EntityField Name="Name" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="Price">
+                          <EntityField Name="Price" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PaymentAmount">
+              <EntityField Name="PaymentAmount" />
+            </Field>
+            <Field Name="PaymentConfirmation">
+              <EntityField Name="PaymentConfirmation" />
+            </Field>
+            <Field Name="PaymentConfirmationDate">
+              <EntityField Name="PaymentConfirmationDate" />
+            </Field>
+            <Field Name="Person">
+              <Document Name="Person">
+                <RootEntity Entity=":Person" NavigatorPath="Person" />
+                <Fields>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                  <Field Name="FirstName">
+                    <EntityField Name="FirstName" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="LastName">
+                    <EntityField Name="LastName" />
+                  </Field>
+                  <Field Name="ObjectStatus">
+                    <EntityField Name="ObjectStatus" />
+                  </Field>
+                  <Field Name="PassportNumber">
+                    <EntityField Name="PassportNumber" />
+                  </Field>
+                  <Field Name="PhoneNumber">
+                    <EntityField Name="PhoneNumber" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengerListView">
+          <RootEntity Entity=":Passenger" />
+          <Fields>
+            <Field Name="Flight">
+              <Document Name="Flight">
+                <RootEntity Entity=":Flight" NavigatorPath="Flight" />
+                <Fields>
+                  <Field Name="FlightNumber">
+                    <EntityField Name="FlightNumber" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Person">
+              <Document Name="Person">
+                <RootEntity Entity=":Person" NavigatorPath="Person" />
+                <Fields>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                  <Field Name="FirstName">
+                    <EntityField Name="FirstName" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="LastName">
+                    <EntityField Name="LastName" />
+                  </Field>
+                  <Field Name="PhoneNumber">
+                    <EntityField Name="PhoneNumber" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="PassengersDetailsView">
+          <RootEntity Entity=":Passenger" />
+          <Fields>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Person">
+              <Document Name="Person">
+                <RootEntity Entity=":Person" NavigatorPath="Person" />
+                <Fields>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                  <Field Name="FirstName">
+                    <EntityField Name="FirstName" />
+                  </Field>
+                  <Field Name="Id">
+                    <EntityField Name="Id" />
+                  </Field>
+                  <Field Name="LastName">
+                    <EntityField Name="LastName" />
+                  </Field>
+                  <Field Name="PassportNumber">
+                    <EntityField Name="PassportNumber" />
+                  </Field>
+                  <Field Name="PhoneNumber">
+                    <EntityField Name="PhoneNumber" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="RouteAmenityDetailsView">
+          <RootEntity Entity=":RouteAmenity" />
+          <Fields>
+            <Field Name="Amenity">
+              <Document Name="Amenity">
+                <RootEntity Entity=":Amenity" NavigatorPath="Amenity" />
+                <Fields>
+                  <Field Name="Description">
+                    <EntityField Name="Description" />
+                  </Field>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="AmenityId">
+              <EntityField Name="AmenityId" />
+            </Field>
+            <Field Name="FlightRouteId">
+              <EntityField Name="FlightRouteId" />
+            </Field>
+            <Field Name="Price">
+              <EntityField Name="Price" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="RouteAmenityListView">
+          <RootEntity Entity=":RouteAmenity" />
+          <Fields>
+            <Field Name="Amenity">
+              <Document Name="Amenity">
+                <RootEntity Entity=":Amenity" NavigatorPath="Amenity" />
+                <Fields>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="AmenityId">
+              <EntityField Name="AmenityId" />
+            </Field>
+            <Field Name="FlightRouteId">
+              <EntityField Name="FlightRouteId" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="ObjectStatus">
+              <EntityField Name="ObjectStatus" />
+            </Field>
+            <Field Name="Price">
+              <EntityField Name="Price" />
+            </Field>
+            <Field Name="Quantity">
+              <EntityField Name="Quantity" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="RouteFlightFeedbackDetailsView">
+          <RootEntity Entity=":RouteFlightFeedback" />
+          <Fields>
+            <Field Name="Comment">
+              <EntityField Name="Comment" />
+            </Field>
+            <Field Name="DateCreated">
+              <EntityField Name="DateCreated" />
+            </Field>
+            <Field Name="Flight">
+              <Document Name="Flight">
+                <RootEntity Entity=":Flight" NavigatorPath="Flight" />
+                <Fields>
+                  <Field Name="ArrivalDate">
+                    <EntityField Name="ArrivalDate" />
+                  </Field>
+                  <Field Name="DepartureDate">
+                    <EntityField Name="DepartureDate" />
+                  </Field>
+                  <Field Name="FlightNumber">
+                    <EntityField Name="FlightNumber" />
+                  </Field>
+                  <Field Name="FlightRoute">
+                    <Document Name="FlightRoute">
+                      <RootEntity Entity=":FlightRoute" NavigatorPath="Flight,FlightRoute" />
+                      <Fields>
+                        <Field Name="AirlineId">
+                          <EntityField Name="AirlineId" />
+                        </Field>
+                        <Field Name="ArrivalAirport">
+                          <EntityField Name="ArrivalAirport" />
+                        </Field>
+                        <Field Name="DepartureAirport">
+                          <EntityField Name="DepartureAirport" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Passengers">
+                    <Document Name="Passenger">
+                      <RootEntity Entity=":Passenger" NavigatorPath="Flight,Passengers" />
+                      <Fields>
+                        <Field Name="AmenityFeedbacks">
+                          <Document Name="AmenityFeedback">
+                            <RootEntity Entity=":AmenityFeedback" NavigatorPath="Flight,Passengers,AmenityFeedbacks" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="RouteAmenityId" />
+                              </Field>
+                              <Field Name="Comment">
+                                <EntityField Name="Comment" />
+                              </Field>
+                              <Field Name="DateCreated">
+                                <EntityField Name="DateCreated" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="PassengerId">
+                                <EntityField Name="PassengerId" />
+                              </Field>
+                              <Field Name="Rating">
+                                <EntityField Name="Rating" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="FlightId">
+                          <EntityField Name="FlightId" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="PassengerAmenitySelections">
+                          <Document Name="PassengerAmenitySelection">
+                            <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="Flight,Passengers,PassengerAmenitySelections" />
+                            <Fields>
+                              <Field Name="AmenityId">
+                                <EntityField Name="RouteAmenityId" />
+                              </Field>
+                              <Field Name="Confirmed">
+                                <EntityField Name="Confirmed" />
+                              </Field>
+                              <Field Name="Customization">
+                                <EntityField Name="Customization" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="PassengerId">
+                                <EntityField Name="PassengerId" />
+                              </Field>
+                              <Field Name="Quantity">
+                                <EntityField Name="Quantity" />
+                              </Field>
+                              <Field Name="RouteAmenity">
+                                <Document Name="RouteAmenity">
+                                  <RootEntity Entity=":RouteAmenity" NavigatorPath="Flight,Passengers,PassengerAmenitySelections,RouteAmenity" />
+                                  <Fields>
+                                    <Field Name="Amenity">
+                                      <Document Name="Amenity">
+                                        <RootEntity Entity=":Amenity" NavigatorPath="Flight,Passengers,PassengerAmenitySelections,RouteAmenity,Amenity" />
+                                        <Fields>
+                                          <Field Name="AirlineId">
+                                            <EntityField Name="AirlineId" />
+                                          </Field>
+                                          <Field Name="Description">
+                                            <EntityField Name="Description" />
+                                          </Field>
+                                          <Field Name="Id">
+                                            <EntityField Name="Id" />
+                                          </Field>
+                                          <Field Name="Name">
+                                            <EntityField Name="Name" />
+                                          </Field>
+                                          <Field Name="ObjectStatus">
+                                            <EntityField Name="ObjectStatus" />
+                                          </Field>
+                                        </Fields>
+                                      </Document>
+                                    </Field>
+                                    <Field Name="AmenityId">
+                                      <EntityField Name="AmenityId" />
+                                    </Field>
+                                    <Field Name="PassengerAmenitySelections">
+                                      <Document Name="PassengerAmenitySelection">
+                                        <RootEntity Entity=":PassengerAmenitySelection" NavigatorPath="Flight,Passengers,PassengerAmenitySelections,RouteAmenity,PassengerAmenitySelections" />
+                                        <Fields>
+                                          <Field Name="Confirmed">
+                                            <EntityField Name="Confirmed" />
+                                          </Field>
+                                          <Field Name="Customization">
+                                            <EntityField Name="Customization" />
+                                          </Field>
+                                          <Field Name="Id">
+                                            <EntityField Name="Id" />
+                                          </Field>
+                                          <Field Name="ObjectStatus">
+                                            <EntityField Name="ObjectStatus" />
+                                          </Field>
+                                          <Field Name="PassengerId">
+                                            <EntityField Name="PassengerId" />
+                                          </Field>
+                                          <Field Name="Quantity">
+                                            <EntityField Name="Quantity" />
+                                          </Field>
+                                          <Field Name="RouteAmenityId">
+                                            <EntityField Name="RouteAmenityId" />
+                                          </Field>
+                                        </Fields>
+                                      </Document>
+                                    </Field>
+                                  </Fields>
+                                </Document>
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="PaymentAmount">
+                          <EntityField Name="PaymentAmount" />
+                        </Field>
+                        <Field Name="PaymentConfirmation">
+                          <EntityField Name="PaymentConfirmation" />
+                        </Field>
+                        <Field Name="PaymentConfirmationDate">
+                          <EntityField Name="PaymentConfirmationDate" />
+                        </Field>
+                        <Field Name="Person">
+                          <Document Name="Person">
+                            <RootEntity Entity=":Person" NavigatorPath="Flight,Passengers,Person" />
+                            <Fields>
+                              <Field Name="Email">
+                                <EntityField Name="Email" />
+                              </Field>
+                              <Field Name="FirstName">
+                                <EntityField Name="FirstName" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="LastName">
+                                <EntityField Name="LastName" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="PassportNumber">
+                                <EntityField Name="PassportNumber" />
+                              </Field>
+                              <Field Name="PhoneNumber">
+                                <EntityField Name="PhoneNumber" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="PersonId">
+                          <EntityField Name="PersonId" />
+                        </Field>
+                        <Field Name="RouteFlightFeedbacks">
+                          <Document Name="RouteFlightFeedback">
+                            <RootEntity Entity=":RouteFlightFeedback" NavigatorPath="Flight,Passengers,RouteFlightFeedbacks" />
+                            <Fields>
+                              <Field Name="Comment">
+                                <EntityField Name="Comment" />
+                              </Field>
+                              <Field Name="DateCreated">
+                                <EntityField Name="DateCreated" />
+                              </Field>
+                              <Field Name="FlightId">
+                                <EntityField Name="FlightId" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="PassengerId">
+                                <EntityField Name="PassengerId" />
+                              </Field>
+                              <Field Name="Rating">
+                                <EntityField Name="Rating" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Passenger">
+              <Document Name="Passenger">
+                <RootEntity Entity=":Passenger" NavigatorPath="Passenger" />
+                <Fields>
+                  <Field Name="AmenityFeedbacks">
+                    <Document Name="AmenityFeedback">
+                      <RootEntity Entity=":AmenityFeedback" NavigatorPath="Passenger,AmenityFeedbacks" />
+                      <Fields>
+                        <Field Name="AmenityId">
+                          <EntityField Name="RouteAmenityId" />
+                        </Field>
+                        <Field Name="Comment">
+                          <EntityField Name="Comment" />
+                        </Field>
+                        <Field Name="DateCreated">
+                          <EntityField Name="DateCreated" />
+                        </Field>
+                        <Field Name="Id">
+                          <EntityField Name="Id" />
+                        </Field>
+                        <Field Name="ObjectStatus">
+                          <EntityField Name="ObjectStatus" />
+                        </Field>
+                        <Field Name="Passenger">
+                          <Document Name="Passenger">
+                            <RootEntity Entity=":Passenger" NavigatorPath="Passenger,AmenityFeedbacks,Passenger" />
+                            <Fields>
+                              <Field Name="FlightId">
+                                <EntityField Name="FlightId" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                              <Field Name="ObjectStatus">
+                                <EntityField Name="ObjectStatus" />
+                              </Field>
+                              <Field Name="PaymentAmount">
+                                <EntityField Name="PaymentAmount" />
+                              </Field>
+                              <Field Name="PaymentConfirmation">
+                                <EntityField Name="PaymentConfirmation" />
+                              </Field>
+                              <Field Name="PaymentConfirmationDate">
+                                <EntityField Name="PaymentConfirmationDate" />
+                              </Field>
+                              <Field Name="PersonId">
+                                <EntityField Name="PersonId" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                        <Field Name="PassengerId">
+                          <EntityField Name="PassengerId" />
+                        </Field>
+                        <Field Name="Rating">
+                          <EntityField Name="Rating" />
+                        </Field>
+                        <Field Name="RouteAmenity">
+                          <Document Name="RouteAmenity">
+                            <RootEntity Entity=":RouteAmenity" NavigatorPath="Passenger,AmenityFeedbacks,RouteAmenity" />
+                            <Fields>
+                              <Field Name="Amenity">
+                                <Document Name="Amenity">
+                                  <RootEntity Entity=":Amenity" NavigatorPath="Passenger,AmenityFeedbacks,RouteAmenity,Amenity" />
+                                  <Fields>
+                                    <Field Name="AirlineId">
+                                      <EntityField Name="AirlineId" />
+                                    </Field>
+                                    <Field Name="Description">
+                                      <EntityField Name="Description" />
+                                    </Field>
+                                    <Field Name="Id">
+                                      <EntityField Name="Id" />
+                                    </Field>
+                                    <Field Name="Name">
+                                      <EntityField Name="Name" />
+                                    </Field>
+                                    <Field Name="ObjectStatus">
+                                      <EntityField Name="ObjectStatus" />
+                                    </Field>
+                                  </Fields>
+                                </Document>
+                              </Field>
+                              <Field Name="AmenityId">
+                                <EntityField Name="AmenityId" />
+                              </Field>
+                              <Field Name="Id">
+                                <EntityField Name="Id" />
+                              </Field>
+                            </Fields>
+                          </Document>
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                  <Field Name="Person">
+                    <Document Name="Person">
+                      <RootEntity Entity=":Person" NavigatorPath="Passenger,Person" />
+                      <Fields>
+                        <Field Name="FirstName">
+                          <EntityField Name="FirstName" />
+                        </Field>
+                        <Field Name="LastName">
+                          <EntityField Name="LastName" />
+                        </Field>
+                      </Fields>
+                    </Document>
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="Rating">
+              <EntityField Name="Rating" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="RouteFlightFeedbackMinimalView">
+          <RootEntity Entity=":RouteFlightFeedback" />
+          <Fields>
+            <Field Name="Comment">
+              <EntityField Name="Comment" />
+            </Field>
+            <Field Name="Rating">
+              <EntityField Name="Rating" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="TourOperatorDetailsView">
+          <RootEntity Entity=":TourOperator" />
+          <Fields>
+            <Field Name="ContactInfo">
+              <EntityField Name="ContactInfo" />
+            </Field>
+            <Field Name="Id">
+              <EntityField Name="Id" />
+            </Field>
+            <Field Name="Name">
+              <EntityField Name="Name" />
+            </Field>
+          </Fields>
+        </Document>
+        <Document Name="UserView">
+          <RootEntity Entity=":User" />
+          <Fields>
+            <Field Name="AirlineId">
+              <EntityField Name="AirlineId" />
+            </Field>
+            <Field Name="Password">
+              <EntityField Name="Password" />
+            </Field>
+            <Field Name="Person">
+              <Document Name="Person">
+                <RootEntity Entity=":Person" NavigatorPath="Person" />
+                <Fields>
+                  <Field Name="Email">
+                    <EntityField Name="Email" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="PersonId">
+              <EntityField Name="PersonId" />
+            </Field>
+            <Field Name="ResetToken">
+              <EntityField Name="ResetToken" />
+            </Field>
+            <Field Name="ResetTokenExpiration">
+              <EntityField Name="ResetTokenExpiration" />
+            </Field>
+            <Field Name="Role">
+              <Document Name="Role">
+                <RootEntity Entity=":Role" NavigatorPath="Role" />
+                <Fields>
+                  <Field Name="Name">
+                    <EntityField Name="Name" />
+                  </Field>
+                </Fields>
+              </Document>
+            </Field>
+            <Field Name="TourOperatorId">
+              <EntityField Name="TourOperatorId" />
+            </Field>
+          </Fields>
+        </Document>
+      </Documents>
+    </DerivedModel>
+  </DerivedModels>
+</Project>

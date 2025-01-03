@@ -1,0 +1,97 @@
+﻿@page "/airline"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    var isRtl = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft;
+    ViewData["Title"] = @L["dashboard"];
+    var alignmentClass = isRtl ? "text-end" : "text-start";
+}
+<div class="container mt-5">
+    <div class="row text-center">
+        <h2>
+            @if (isRtl)
+            {
+                @($"{Model.Airline?.Name} ,{L["hello"]}")
+            }
+            else
+            {
+                @($"{L["hello"]}, {Model.Airline?.Name}")
+            }
+        </h2>
+        <p>@L["welcome-to-your-dashboard-!"] @L["manage"] @LF["your-flights"]</p>
+        <br/>
+        <br/>
+
+        <!-- Enabled Services Card -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary h-100">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.NumOfEnabledServices, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LS["enabled-services"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-box-open" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+
+        <!-- Disabled Services Card -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary h-100">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.NumOfDisabledServices, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LS["disabled-services"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-box" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+
+        <!-- Enabled Routes Card -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary h-100">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.NumOfRoutes, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LA["enabled-routes"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-route" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+
+        <!-- Upcoming Flights Card -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary h-100">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.NumOfUpcomingFlights, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LF["upcoming-flights"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-plane" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>

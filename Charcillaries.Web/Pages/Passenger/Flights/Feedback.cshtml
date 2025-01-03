@@ -1,0 +1,183 @@
+﻿@page "/passenger/{passengerId}/flights/feedback"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.Flights.Feedback
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+
+
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @LF["past-flights"];
+}
+
+@section Styles {
+    <style>
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: start;
+            cursor: pointer;
+        }
+
+        .star-rating .star {
+            font-size: 1.5rem;
+            color: gold;
+            margin-right: 0.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .star-rating .star:hover,
+        .star-rating .star:hover ~ .star {
+            color: #ff9100;
+            transform: scale(1.2);
+        }
+    </style>
+}
+
+<div class="container mt-5 flex-column d-flex align-items-center">
+    <div>
+        <h1 class="text-center font-weight-bold">
+            @Model.PassengerFlightDetailsView!.Flight.FlightNumber @LF["flight"]
+            @L["feedback"]
+        </h1>
+    </div>
+
+
+    <form method="post" class="w-75 mt-5 d-flex flex-column ">
+        <input type="hidden" asp-for="FlightId"
+               value="@Hash.EncodeInt(Model.PassengerFlightDetailsView!.Flight.Id)"/>
+        <div class="d-flex flex-column flex-md-row">
+            <h3 class="font-weight-bold me-4">@L["how-was-your-trip"]</h3>
+
+            @await Html.PartialAsync("HelperComponents/StarComponent", Model.RouteFlightFeedbackMinimalView?.Rating ?? 0)
+
+            <input type="hidden" asp-for="RouteFlightFeedback.Rating"
+                   value="@Model.RouteFlightFeedbackMinimalView?.Rating"/>
+            <span asp-validation-for="RouteFlightFeedback.Rating" class="text-danger"></span>
+        </div>
+        <textarea class="form-control mt-3" asp-for="RouteFlightFeedback.Comment" rows="4"
+                  placeholder="Comment"></textarea>
+        <span asp-validation-for="RouteFlightFeedback.Comment" class="text-danger"></span>
+
+
+        <div class="mt-5">
+            <h1 class="text-center font-weight-bold">
+                @L["amenities-feedback"]
+                <sub class="fs-6">
+                    (@L["not-all-required"]
+                    )
+                </sub>
+            </h1>
+        </div>
+
+        <div class=" mt-5  d-flex flex-wrap justify-content-center">
+            @for (var i = 0; i < Model.PassengerFlightDetailsView!.PassengerAmenitySelections.Count; i++)
+            {
+                var amenitySelection = Model.PassengerFlightDetailsView!.PassengerAmenitySelections[i];
+                Model.AmenityFeedbackMinimalView.TryGetValue(amenitySelection.RouteAmenity.AmenityId, out var amenityFeedback);
+                if (amenityFeedback == null)
+                {
+                    Model.RouteAmenityFeedbackNew.RouteAmenityFeedbacksList.Add(new RouteAmenityFeedbackNewInput { Comment = amenityFeedback?.Comment });
+
+                    <input type="hidden" asp-for="RouteAmenityFeedbackNew.RouteAmenityFeedbacksList[i].AmenityId"
+                           value="@Hash.EncodeInt(amenitySelection.RouteAmenity.AmenityId)"/>
+                    <div class="p-2 flex-grow-1" style="min-width: 50%;">
+
+                        <div class="d-flex flex-column justify-content flex-md-row">
+                            <h3 class="font-weight-bold me-3">@amenitySelection.RouteAmenity.Amenity.Name</h3>
+
+                            @await Html.PartialAsync("HelperComponents/StarComponent", amenityFeedback?.Rating ?? 0)
+
+                            <input type="hidden" value="@amenityFeedback?.Rating"
+                                   asp-for="RouteAmenityFeedbackNew.RouteAmenityFeedbacksList[i].Rating"/>
+                            <span asp-validation-for="RouteAmenityFeedbackNew.RouteAmenityFeedbacksList[i].Rating"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <textarea asp-for="RouteAmenityFeedbackNew.RouteAmenityFeedbacksList[i].Comment"
+                          class="form-control mt-3"
+                          placeholder="Comment" rows="4"></textarea>
+                        <span asp-validation-for="RouteAmenityFeedbackNew.RouteAmenityFeedbacksList[i].Comment"
+                              class="text-danger">
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    Model.RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList.Add(new RouteAmenityFeedbackUpdateInput { Comment = amenityFeedback.Comment });
+
+                    <input type="hidden" asp-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].AmenityId"
+                           value="@Hash.EncodeInt(amenitySelection.RouteAmenity.AmenityId)"/>
+                    <input type="hidden" asp-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].Id"
+                           value="@Hash.EncodeInt(amenityFeedback.Id)"/>
+                    <div class="p-2 flex-grow-1" style="min-width: 50%;">
+
+                        <div class="d-flex flex-column justify-content flex-md-row">
+                            <h3 class="font-weight-bold me-3">@amenitySelection.RouteAmenity.Amenity.Name</h3>
+
+                            @await Html.PartialAsync("HelperComponents/StarComponent", amenityFeedback.Rating ?? 0)
+
+                            <input type="hidden" value="@amenityFeedback.Rating"
+                                   asp-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].Rating"/>
+                            <span asp-validation-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].Rating"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <textarea asp-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].Comment"
+                          class="form-control mt-3"
+                          placeholder="Comment" rows="4"></textarea>
+                        <span asp-validation-for="RouteAmenityFeedbackUpdate.RouteAmenityFeedbacksList[i].Comment"
+                              class="text-danger">
+                        </span>
+                    </div>
+                }
+            }
+        </div>
+        <div class="w-100 d-flex justify-content-center">
+            <button type="submit" class="btn button my-2">@L["submit"]</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.star-rating .star').forEach(star => {
+            star.addEventListener('click', function () {
+                const rating = this.getAttribute('data-value');
+                const input = this.parentElement.parentElement.querySelector('input');
+
+                if (input.value === rating) {
+                    input.value = "0";
+
+                    this.closest('.star-rating').querySelectorAll('.star').forEach(s => {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                    });
+
+                    return;
+                }
+
+                if (input) {
+                    input.value = rating;
+                }
+
+                // Update the star appearance
+                this.closest('.star-rating').querySelectorAll('.star').forEach(s => {
+                    if (s.getAttribute('data-value') <= rating) {
+                        s.innerHTML = '<i class="fas fa-star"></i>';
+                    } else {
+                        s.innerHTML = '<i class="far fa-star"></i>';
+                    }
+                });
+            });
+        });
+    });
+</script>
+}

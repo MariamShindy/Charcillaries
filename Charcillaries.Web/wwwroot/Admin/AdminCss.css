@@ -1,0 +1,30 @@
+﻿.btn-container {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-container a {
+    text-decoration: none;
+}
+
+.fa-edit {
+    margin-top: 5px;
+}
+
+#AddButton {
+    width: 150px;
+    height: 30px;
+}
+
+.btn-secondary {
+    background-color: white !important;
+    border: 0.01rem solid black !important;
+    color: black !important;
+}
+.table .thead-dark th {
+    color: #fff !important;
+    background-color: #343a40 !important;
+    border-color: #454d55 !important;
+}
+

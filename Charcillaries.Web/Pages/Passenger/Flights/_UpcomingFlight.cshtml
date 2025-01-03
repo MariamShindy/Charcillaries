@@ -1,0 +1,62 @@
+﻿@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Data.Views.DtoClasses.FlightDetailsView
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+
+
+<div class="col-12 mb-4">
+    <div class="card h-100 card-silver shadow-sm">
+        <div class="card-header fs-5 fw-bold blue-text">
+            @LF["flight"] @Model.FlightNumber
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                <div>
+                    <p class="card-text">
+                        <strong>
+                            @LF["from"]
+                            :
+                        </strong>@Model.FlightRoute.DepartureAirport
+                        <strong>
+                            || @LF["to"]
+                            :
+                        </strong>@Model.FlightRoute.ArrivalAirport
+                    </p>
+                    <p class="card-text">
+                        <strong>
+                            @LF["departure"]
+                            :
+                        </strong>@Arabic.ConvertToArabicDigitsByCulture(Model.DepartureDate.ToString("h:mm tt"), CultureInfo.CurrentCulture.Name)
+                        <strong>
+                            @LF["arrival"]
+                            :
+                        </strong>@Arabic.ConvertToArabicDigitsByCulture(Model.ArrivalDate.ToString("h:mm tt"), CultureInfo.CurrentCulture.Name)
+                    </p>
+                    <p class="card-text">
+                        <strong>
+                            @L["date"]
+                            :
+                        </strong> @Arabic.ConvertToArabicDigitsByCulture(Model.DepartureDate.ToString("dd/MM/yyyy"), CultureInfo.CurrentCulture.Name)
+                    </p>
+                </div>
+                <form class="d-flex flex-column mt-3 mt-md-0" hx-post hx-target="#flights" hx-swap="afterbegin"
+                      hx-page-handler="AssignSelf">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="FlightId" value="@Hash.EncodeInt(Model.Id)"/>
+                    <span id="flight-id-validation-@Hash.EncodeInt(Model.Id)"></span>
+                    <button class="btn button btn-primary"> @L["assign"]</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span id="departure-date-validation" hx-swap-oob="true" class="text-danger"></span>
+<span id="flight-id-validation" hx-swap-oob="true" class="text-danger"></span>
+<span id="flight-number-validation" hx-swap-oob="true" class="text-danger"></span>

@@ -1,0 +1,130 @@
+﻿@page
+@using Charcillaries.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@model Charcillaries.Web.Pages.Airline.Flights.AddModel
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LF["add-flight"];
+}
+
+
+<div class="container mt-5">
+    <div class="row h-100">
+        <div class="col col-12 col-md-8">
+
+            <div class="d-flex w-100 flex-column align-items-center">
+                <div class="d-flex w-75 justify-content-between">
+                    <h1>@LF["add-flight"]</h1>
+                    <button class="btn button d-md-none" data-bs-toggle="offcanvas"
+                            data-bs-target="#routeSummaryOffcanvas">
+                        @LA["route-details"]
+                    </button>
+                </div>
+                <form method="post" class="w-75" enctype="application/x-www-form-urlencoded">
+                    @Html.AntiForgeryToken()
+                    <div>
+                        <label for="route" class="form-label">@LA["route"]</label>
+                        <select hx-post hx-page-handler="Routes" hx-target="#routeDetails"
+                                hx-params="FlightRouteId, __RequestVerificationToken" id="route"
+                                class="form-select" asp-for="FlightRouteId">
+                            @if (Model.Routes.Count != 0)
+                            {
+                                foreach (var route in Model.Routes)
+                                {
+                                    <option value="@Hash.EncodeInt(route.Id)">
+                                        @route.DepartureAirport --> @route.ArrivalAirport
+                                    </option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">@LA["no-routes-available"]</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="tourOperator" class="form-label">@LT["tour-operator"]</label>
+                        <select id="tourOperator" class="form-select" asp-for="TourOperatorId">
+                            @if (Model.TourOperators.Count != 0)
+                            {
+                                foreach (var tourOperator in Model.TourOperators)
+                                {
+                                    <option value="@Hash.EncodeInt(tourOperator.Id)">@tourOperator.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="">@LT["no-tour-operators-available"]</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="flightNumber" class="form-label">@L["name"]</label>
+                        <input type="text" class="form-control" id="flightNumber" asp-for="Flight.FlightNumber"
+                               placeholder=@L["enter-flight-number"]>
+                        <span asp-validation-for="Flight.FlightNumber" class="text-danger"></span>
+                        <!-- This is the validation message -->
+                    </div>
+                    <div class="mt-2">
+                        <label for="departureDate" class="form-label">@L["departure-time"]</label>
+                        <input type="datetime-local" class="form-control" id="departureDate" value=""
+                               asp-for="Flight.DepartureDate" placeholder=@L["enter-departure-date"]>
+                        <span asp-validation-for="Flight.DepartureDate" class="text-danger"></span>
+                        <!-- This is the validation message -->
+                    </div>
+                    <div class="mt-2">
+                        <label for="arrivalDate" class="form-label">@L["arrival-time"]</label>
+                        <input type="datetime-local" class="form-control" value="" id="arrivalDate"
+                               asp-for="Flight.ArrivalDate"
+                               placeholder=@L["enter-arrival-date"]>
+                        <span asp-validation-for="Flight.ArrivalDate" class="text-danger"></span>
+                        <!-- This is the validation message -->
+                    </div>
+
+                    <div class="mt-2">
+                        <label for="numberOfSeats" class="form-label"> @L["number-of-seats"]</label>
+                        <input type="number" class="form-control" id="numberOfSeats" asp-for="Flight.NumberOfSeats"
+                               placeholder=@L["enter-number-of-seats"]>
+                        <span asp-validation-for="Flight.NumberOfSeats" class="text-danger"></span>
+                        <!-- This is the validation message -->
+                    </div>
+
+                    <button type="submit" class="btn button mt-4">@L["submit"]</button>
+                </form>
+
+            </div>
+        </div>
+        <div id="routeSummaryOffcanvas" class="p-3 col col-md-4 offcanvas-md offcanvas-end">
+            
+            <div class="p-3 rounded-3 d-flex flex-column mt-md-0 mt-4" style="background: #eeeeee">
+                <h3>@LA["route-details"]</h3>
+                <ul id="routeDetails">
+                    @await Html.PartialAsync("_FlightRouteAmenities", Model.FlightRouteAmenities)
+                </ul>
+            </div>
+            <br />
+            <button class="btn red-button d-md-none" data-bs-toggle="offcanvas"
+                    data-bs-target="#routeSummaryOffcanvas">
+                @L["cancel"]
+            </button>
+        </div>
+    </div>
+</div>

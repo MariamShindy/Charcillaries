@@ -1,0 +1,52 @@
+﻿@page "/airline/routes/{routeId}/services/{routeAmenityId}/edit"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.Services.EditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LS["edit-route-services"];
+}
+<div class="container mt-5">
+    <h3 class="mb-4 text-center">@LS["edit-service"]</h3>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="FlightRouteId"/>
+        <input type="hidden" asp-for="AmenityId"/>
+        <div class="row g-3 align-items-center">
+            <div class="col-12 mb-3">
+                <h6>@LS["service"]</h6>
+                <div class="border rounded p-3">
+                    <h5 class="d-flex align-items-center">
+                        <span class="text-primary">@Model.RouteAmenityDetails?.Amenity.Name</span>
+                    </h5>
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">@LS["price"] @L["egp"]</label>
+                <input id="priceInput" type="number" class="form-control" placeholder=@L["enter-price"]
+                       asp-for="RouteAmenity.Price" value="@Model.RouteAmenityDetails?.Price" step="any">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-grid">
+                <span asp-validation-for="RouteAmenity.Price" class="text-danger mx-auto"></span> <!-- This is the validation message -->
+            </div>
+        </div>
+        <div class="mt-5">
+            <button type="submit" class="btn btn-success">@L["save"]</button>
+            <a href="/airline/routes/@Model.FlightRouteId/services/enabled" class="btn btn-secondary ms-2">@L["cancel"]</a>
+        </div>
+    </form>
+</div>

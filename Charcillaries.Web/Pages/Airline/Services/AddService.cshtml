@@ -1,0 +1,46 @@
+﻿@page "/airline/services/add"
+@using Charcillaries.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@model Charcillaries.Web.Pages.Airline.Services.AddServiceModel
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LS["add-service"];
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h1>@LS["add-service"]</h1>
+    <form method="post" class="w-50" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div>
+            <label for="amenityeName" class="form-label">@L["name"]</label>
+            <input type="text" class="form-control" id="amenityeName" asp-for="Amenity.Name" placeholder=@L["enter-name"]>
+            <span asp-validation-for="Amenity.Name" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div>
+            <label for="amenityDescription" class="form-label">@L["description"]</label>
+            <textarea type="text" class="form-control" id="amenityDescription" asp-for="Amenity.Description" placeholder=@L["enter-description"]></textarea>
+            <span asp-validation-for="Amenity.Description" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div>
+            <label for="amenityIcon" class="form-label">@L["icon"]</label>
+            <input type="file" class="form-control" id="amenityIcon" asp-for="Amenity.Icon" placeholder=@L["upload-icon"]>
+            <span asp-validation-for="Amenity.Icon" class="text-danger"></span> <!-- This is the validation message -->
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn blue-button">@L["add"]</button>
+            <a href="/airline/services/enabled" class="btn btn-secondary">@L["cancel"]</a>
+        </div>
+    </form>
+</div>

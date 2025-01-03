@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  db:
+    build: .
+    networks:
+      - nginx_reverse_proxy
+      - db_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=deployment_dev
+
+    volumes:
+      - DataProtection-Keys:/root/.aspnet/DataProtection-Keys
+
+volumes:
+    DataProtection-Keys:
+
+networks:
+  nginx_reverse_proxy:
+    external: true
+  db_network:
+    external: true

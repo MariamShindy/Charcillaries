@@ -1,0 +1,113 @@
+.navbar-brand img {
+    max-height: 45px;
+   
+
+}
+
+.navbar-brand {
+    font-size: 35px;
+}
+
+.navbar-text img {
+    width: 24px;
+    height: auto;
+   
+}
+
+.navbar {
+    background-color: #f5f5f5;
+}
+
+.sidebar {
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    border-right: 1px solid #b1c2d0;
+    border-left: 1px solid #b1c2d0;
+}
+
+.sidebar .nav-link {
+    color: #495057;
+    white-space: nowrap;
+}
+
+.sidebar .nav-link:hover {
+    color: #007bff;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+.bg-blue {
+    background-color: #355da3 !important;
+}
+.text {
+    color: #eeeeee !important;
+}
+.text:hover {
+    color: #000000 !important;
+}
+.passenger-sidebar {
+    background-color: #355da3 !important;
+}
+.button, #AddButton, #DetailsButton, #PassengersButton {
+    background-color: #3f539f;
+    color: #f8f8f8;
+    margin-bottom: 10px;
+}
+
+.button-danger {
+    background-color: #a33535;
+    color: #f8f8f8;
+}
+.bg-secondary {
+    background-color: #eeeeee !important;
+    border: 1px solid #a0a0a0 !important;
+    border-radius: 5px !important;
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-link {
+        font-size: 0.875rem; 
+    }
+    .title {
+        font-size: 1.75rem;
+    }
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .fa-bars {
+        font-size: 1.25rem;
+    }
+}
+@media (max-width: 576px) {
+    .title {
+        font-size: 1.5rem;
+    }
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .fa-bars {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .title {
+        font-size: 1.25rem;
+    }
+    .logo {
+        display: none;
+
+    }
+    .title-text {
+    }
+    
+    .fa-bars {
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,14 @@
+﻿@model Charcillaries.Web.Pages.TourOperator.Flights.UpcomingFlightPassengers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Htmx.TagHelpers
+
+<span asp-validation-for="PassengerNewInput.Person.FirstName" id="FirstNameVal" hx-swap-oob="true"
+      class="text-danger">
+</span>
+<span asp-validation-for="PassengerNewInput.Person.LastName" id="LastNameVal" hx-swap-oob="true"
+      class="text-danger">
+</span>
+<span asp-validation-for="PassengerNewInput.Person.Email" id="EmailVal" hx-swap-oob="true" class="text-danger"></span>
+<span asp-validation-for="PassengerNewInput.Person.PhoneNumber" id="PhoneNumberVal" hx-swap-oob="true"
+      class="text-danger">
+</span>

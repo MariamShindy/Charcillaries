@@ -1,0 +1,106 @@
+﻿@page "/airline/routes/enabled"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.EnabledRoutesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LA["enabled-routes"];
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h3>@LA["enabled-routes"]</h3>
+    </div>
+    <div class="row mb-3">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                @LA["enabled-routes"]
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/airline/routes/disabled">@LA["disabled-routes"]</a>
+            </div>
+        </div>
+        <div class="col-12 col-md-3 mt-3">
+            <a href="/airline/routes/add" class="btn blue-button mb-2 mt-3 mt-md-0">@LA["add-route"]</a>
+        </div>
+    </div>
+    <div class="row">
+        @if (Model.Routes.Any())
+        {
+            foreach (var route in Model.Routes)
+            {
+                var routeId = Hash.EncodeInt(route.Id);
+                <div class="col-12 mb-4">
+                    <div class="card h-100 card-silver shadow-sm">
+                        <div class="card-header fs-5 fw-bold blue-text">
+                            <i class="fa-solid fa-plane-departure ms-2"></i> <span>@route.DepartureAirport </span> ||
+                            <i class="fa-solid fa-plane-arrival ms-2"></i> <span>@route.ArrivalAirport </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                <div>
+                                    <p class="card-text">
+                                        <strong>
+                                            @LS["available-services"]
+                                            :
+                                        </strong>@Arabic.ConvertToArabicDigitsByCulture(Model.RouteEnabledServices[route.Id], CultureInfo.CurrentCulture.Name)
+                                    </p>
+                                </div>
+                                <div class="flex-grow-1 d-flex justify-content-end mt-3 mt-md-0">
+                                    <a href="/airline/routes/@routeId"
+                                       class="btn btn-light me-2  border-dark">
+                                        @L["details"]
+                                    </a>
+
+                                    <a href="/airline/routes/@routeId/edit" class="btn blue-button me-2">@LA["edit-route"]</a>
+                                    <form id="form-@routeId" method="post" asp-route-id="@routeId" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@routeId"/>
+                                        <button type="button" class="btn button-danger delete-button me-2" title="Delete"
+                                                data-form-id="form-@routeId" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                            <div>@L["disable"]</div>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>@L["no-data-available"]</p>
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@L["confirm-deletion"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @L["delete-sentence"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@L["cancel"]</button>
+                <button type="button" class="btn button-danger" id="confirmDelete">@L["confirm"]</button>
+            </div>
+        </div>
+    </div>
+</div>

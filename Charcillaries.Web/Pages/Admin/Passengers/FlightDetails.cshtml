@@ -1,0 +1,76 @@
+﻿@page "/admin/passengers/{passengerId}/flight"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.Passengers.FlightDetailsModel
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = $"{LP["passenger"]} {Model.Passenger!.Person.FirstName} {Model.Passenger!.Person.LastName} {LF["flight"]} {Model.Passenger!.Flight!.FlightNumber}";
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <div class="card mb-5">
+        <div class="card-body">
+            <h4 class="card-title text-center">@Model.Passenger!.Person.FirstName @Model.Passenger!.Person.LastName</h4>
+            <p class="card-text">
+                <strong>@L["phone-number"]: </strong><span dir="ltr">@Model.Passenger!.Person.PhoneNumber</span><br/>
+                <strong>@L["email"]: </strong>@Model.Passenger!.Person.Email<br/>
+            </p>
+        </div>
+    </div>
+    <h3 class="mb-4">@LF["flight-details"]</h3>
+
+    <div class="w-50">
+        <div class="mb-3">
+            <strong>@LF["flight-number"]</strong>
+            <p class="form-control-plaintext border rounded p-2">@Model.Passenger?.Flight?.FlightNumber</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["departure-date"]</strong>
+            <p class="form-control-plaintext border rounded p-2">@Arabic.ConvertToArabicDigitsByCulture(Model.Passenger!.Flight!.DepartureDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</p>
+
+        </div>
+        <div class="mb-3">
+            <strong>@L["arrival-date"]</strong>
+            <p class="form-control-plaintext border rounded p-2">@Arabic.ConvertToArabicDigitsByCulture(Model.Passenger!.Flight!.ArrivalDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["from"]</strong>
+            <p class="form-control-plaintext border rounded p-2">@Model.Passenger?.Flight?.FlightRoute?.DepartureAirport</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["to"]</strong>
+            <p class="form-control-plaintext border rounded p-2">@Model.Passenger?.Flight?.FlightRoute?.ArrivalAirport</p>
+        </div>
+        <div class="mb-3">
+            <strong>@LS["services"]</strong>
+            @if (Model.Passenger?.PassengerAmenitySelections != null && Model.Passenger.PassengerAmenitySelections.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var amenity in Model.Passenger.PassengerAmenitySelections)
+                    {
+                        <li class="list-group-item">@amenity.RouteAmenity.Amenity.Name</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>@LS["no-services-available"]</p>
+            }
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="/admin/passengers" class="btn button mt-4">@LP["back-to-passengers"]</a>
+        </div>
+    </div>
+</div>

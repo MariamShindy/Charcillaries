@@ -1,0 +1,129 @@
+﻿@page "/airline/routes/{routeId}"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Airline.Routes.DetailsModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AirlineLayout";
+    ViewData["Title"] = @LA["route-details"];
+}
+<div class="container mt-5">
+    <h3 class="mb-5 text-center">@LA["route-details"]</h3>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h6>@L["departure-airport"]</h6>
+            <div class="border rounded p-3">
+                <h5 class="d-flex align-items-center">
+                    <i class="fa-solid fa-plane-departure me-3"></i>
+                    <span class="text-primary me-3">@Model.Route?.DepartureAirport</span>
+                </h5>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h6>@L["arrival-airport"]</h6>
+            <div class="border rounded p-3">
+                <h5 class="d-flex align-items-center">
+                    <i class="fa-solid fa-plane-arrival me-3"></i>
+                    <span class="text-primary me-3">@Model.Route?.ArrivalAirport</span>
+                </h5>
+            </div>
+        </div>
+    </div>
+    <!-- Flights Section -->
+    <div class="mt-4">
+        <h4>@LF["associated-flights"]</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                <tr class="">
+                    <th>@LF["flight-number"]</th>
+                    <th>@L["departure-time"]</th>
+                    <th>@L["arrival-time"]</th>
+                    <th>@LT["tour-operator"]</th>
+                </tr>
+                </thead>
+                <tbody class="">
+                @if (Model.Route != null && Model.Route.Flights.Any())
+                {
+                    @foreach (var flight in Model.Route.Flights)
+                    {
+                        <tr>
+                            <td>@flight.FlightNumber</td>
+                            <td>@Arabic.ConvertToArabicDigitsByCulture(flight.DepartureDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</td>
+                            <td>@Arabic.ConvertToArabicDigitsByCulture(flight.ArrivalDate.ToString(CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name)</td>
+                            <td>@flight.TourOperator.Name</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">@LF["no-flights-available"]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="mt-4">
+        <h4>@LS["associated-services"]</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @if (Model.Route != null && Model.Route.RouteAmenities.Any(r => r.ObjectStatus == 1))
+            {
+                @foreach (var amenity in Model.Route.RouteAmenities)
+                {
+                    if (amenity.ObjectStatus == 1)
+                    {
+                        <div class="col">
+                            <div class="card h-100 border-1 border-secondary" style="background: #eeeeee">
+                                <div class="card-body">
+                                    <h5 class="card-title">@amenity.Amenity.Name</h5>
+                                    <p class="card-text">@amenity.Amenity.Description</p>
+                                    <p class="card-text">@Arabic.ConvertToArabicDigitsByCulture(amenity.Price.ToString("N2",CultureInfo.CurrentCulture), CultureInfo.CurrentCulture.Name) @L["egp"]</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+            else
+            {
+                <div class="col">
+                    <div class="card h-100 border-1 border-secondary" style="background: #eeeeee">
+                        <div class="card-body">
+                            <p class="card-text">@LS["no-services-available"]</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-4">
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-3">
+            <a href="/airline/routes/@Hash.EncodeInt(Model.Route!.Id)/services/enabled"
+               class="btn blue-button w-100">
+                @LS["manage-services"]
+            </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center mb-3">
+            <a href="/airline/routes/enabled" class="btn blue-button w-100">
+                @L["back-to"] @LA["enabled-routes"]
+            </a>
+        </div>
+    </div>
+
+
+</div>

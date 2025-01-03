@@ -1,0 +1,33 @@
+﻿@page "/admin/tour-operators/{tourOperatorId}/edit"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.TourOperators.EditModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = $"{LT["edit-tour-operator"]} {Model.TourOperatorDetailsView?.Name}";
+}
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h3>@LT["edit-tour-operator"]</h3>
+
+    <form method="post" class="w-50" enctype="application/x-www-form-urlencoded">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label for="airlineName" class="mb-2 form-label">@L["name"]</label>
+            <input type="text" class="form-control" id="airlineName" value="@Model.TourOperatorDetailsView?.Name"
+                   asp-for="TourOperatorInput.Name">
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="mb-2 form-label">@L["contact-information"]</label>
+            <input type="tel" class="form-control" id="phoneNumber" value="@Model.TourOperatorDetailsView?.ContactInfo"
+                   asp-for="TourOperatorInput.ContactInfo">
+        </div>
+        <div class="d-flex justify-content-center">
+            <button href="/admin/tour-operators" class="btn button mt-4">@L["edit"]</button>
+        </div>
+    </form>
+
+</div>

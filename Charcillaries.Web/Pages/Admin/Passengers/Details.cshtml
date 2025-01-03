@@ -1,0 +1,47 @@
+﻿@page "/admin/passengers/{passengerId}"
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Passenger
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.Passengers.DetailsModel
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = $"{LP["passenger"]} {Model.Passenger?.Person.FirstName} {Model.Passenger?.Person.LastName}";
+}
+
+<div class="d-flex align-items-center w-100 flex-column mt-5">
+    <h3 class="mb-3">@LP["passenger-details"]</h3>
+
+    <div class="w-50">
+        <div class="mb-3">
+            <strong>@L["first-name"]</strong>
+            <p class="border rounded p-2">@Model.Passenger?.Person.FirstName</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["last-name"]</strong>
+            <p class="border rounded p-2">@Model.Passenger?.Person.LastName</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["email"]</strong>
+            <p class="border rounded p-2">@Model.Passenger?.Person.Email</p>
+        </div>
+        <div class="mb-3">
+            <strong>@L["phone-number"]</strong>
+            <p dir="ltr" class="border rounded p-2">@Model.Passenger?.Person.PhoneNumber</p>
+        </div>
+        <div class="mb-3">
+            <strong>
+                @LP["passenger-flights"]</strong>
+            <div class="mt-2">
+                <a href="/admin/passengers/@Hash.EncodeInt(Model.Passenger!.Person.Id)/flights">
+                    <button class="btn btn-secondary">@L["information"]</button>
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="/admin/passengers" class="btn button mt-4">@LP["back-to-passengers"]</a>
+        </div>
+    </div>
+</div>

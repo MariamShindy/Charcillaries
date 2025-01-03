@@ -1,0 +1,71 @@
+﻿@page "/admin/passengers/{personId}/flights"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.Passengers.FlightsModel
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@inject IStringLocalizer<FlightLocalization> LF
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = $"{LP["passenger"]} {Model.Passenger!.Person!.FirstName} {Model.Passenger!.Person!.LastName} {LF["flights"]}";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Admin/AdminCss.css"/>
+}
+
+<div class="container mt-5">
+    <div class="card mb-5">
+        <div class="card-body">
+            <h4 class="card-title text-center">@Model.Passenger!.Person!.FirstName @Model.Passenger!.Person!.LastName</h4>
+            <p class="card-text">
+                <strong>@L["email"]:</strong> @Model.Passenger!.Person.Email<br/>
+                <strong>@L["phone-number"]:</strong> <span dir="ltr">@Model.Passenger!.Person.PhoneNumber</span>
+            </p>
+        </div>
+    </div>
+    <h3 class="text-center mb-4">@LF["flights"]</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover text-center">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">@LF["flight-number"]</th>
+                <th scope="col">@L["departure-date"]</th>
+                <th scope="col">@L["arrival-date"]</th>
+                <th scope="col">@L["departure-airport"]</th>
+                <th scope="col">@L["arrival-airport"]</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Model.Flights.Any())
+            {
+                @foreach (var flight in Model.Flights)
+                {
+                    <tr onclick="window.location.href='/admin/flights/@Hash.EncodeInt(flight.Id)'" style="cursor: pointer;">
+                        <td>@(flight.Flight.FlightNumber)</td>
+                        <td>@Arabic.ConvertToArabicDigitsByCulture(flight.Flight.DepartureDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</td>
+                        <td>@Arabic.ConvertToArabicDigitsByCulture(flight.Flight.ArrivalDate.ToString("dd-MM-yyyy | hh:mm tt"), CultureInfo.CurrentCulture.Name)</td>
+                        <td>@flight.Flight.FlightRoute.DepartureAirport</td>
+                        <td>@flight.Flight.FlightRoute.ArrivalAirport</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">@L["no-flights-available"]</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <a href="/admin/passengers" class="btn button">@LP["back-to-passengers"]</a>
+    </div>
+</div>

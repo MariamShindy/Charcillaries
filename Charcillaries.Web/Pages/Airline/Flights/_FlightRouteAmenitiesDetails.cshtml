@@ -1,0 +1,25 @@
+﻿@model Charcillaries.Data.Views.DtoClasses.FlightPassengersDetailsView
+@using Charcillaries.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Core.Features.TourOperator
+@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<Global> L
+<li>@L["departure-airport"]: @Model.FlightRoute.DepartureAirport</li>
+<li>@L["arrival-airport"]: @Model.FlightRoute.ArrivalAirport</li>
+<li>
+    @LS["services"]:
+    <ul class="inner-list">
+        @foreach (var routeAmenities in Model.FlightRoute.RouteAmenities)
+        {
+            <li>@routeAmenities.Amenity.Name</li>
+        }
+    </ul>
+</li>

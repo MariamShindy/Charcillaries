@@ -1,0 +1,73 @@
+﻿@page "/admin"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Airline
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.TourOperator
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Admin.IndexModel
+@inject IStringLocalizer<TourOperatorLocalization> LT
+@inject IStringLocalizer<AirlineLocalization> LA
+@inject IStringLocalizer<PassengerLocalization> LP
+@inject IStringLocalizer<Global> L
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = @L["admin-dashboard"];
+}
+
+<div class="container mt-5">
+    <div class="row text-center justify-content-center">
+        <h2>@L["hello-admin"]</h2>
+        <p>@L["admin-dashboard-description"]</p>
+        <br/>
+        <br/>
+
+        <!-- Tour Operators Card -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.TourOperators, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LT["total-tour-operators"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-passport" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+
+        <!-- Airlines Card -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.Airlines, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LA["total-airlines"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-plane" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+
+        <!-- Passengers Card -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <br/>
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.Passengers, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LP["total-passengers"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-light fa-users" style="font-size:40px;"></i>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>

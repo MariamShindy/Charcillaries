@@ -1,0 +1,73 @@
+﻿@page "/passenger"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Flight
+@using Charcillaries.Core.Features.Passenger
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<FlightLocalization> LF
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<PassengerLocalization> LP
+@{
+    Layout = "~/Pages/Shared/_PassengerLayout.cshtml";
+    ViewData["Title"] = @LP["passenger-dashboard"];
+}
+<style>
+    .custom-card-height {
+        min-height: 200px; /* Adjust this value to your desired height */
+        padding: 20px; /* Add padding to ensure content is not squeezed */
+    }
+
+</style>
+<div class="container mt-5">
+    <div class="row text-center justify-content-center">
+        <h2>@L["hello-passenger"]</h2>
+        <p>@L["passenger-dashboard-description"]</p>
+        <br/>
+        <br/>
+
+        <!-- Card for Upcoming Flights -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary custom-card-height">
+                <div class="inner">
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.UpcomingFlights, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LF["total-upcoming-flights"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-plane-departure" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for Past Flights -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary custom-card-height">
+                <div class="inner">
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.PastFlights, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LF["total-past-flights"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-plane-arrival" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card for Cart Items -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="small-box bg-secondary custom-card-height">
+                <div class="inner">
+                    <h3>@Arabic.ConvertToArabicDigitsByCulture(Model.CartItems, CultureInfo.CurrentCulture.Name)</h3>
+                    <p class="fs-5 fw-bold">@LS["total-cart-items"]</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart" style="font-size:40px;"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

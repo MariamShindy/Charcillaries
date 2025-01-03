@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Data\Code\Charcillaries.Data.Views.Persistence\Charcillaries.Data.Views.Persistence.csproj" />
+        <ProjectReference Include="..\Data\Code\Charcillaries.Data.Views\Charcillaries.Data.Views.csproj" />
+        <ProjectReference Include="..\Data\Code\DatabaseGeneric\Charcillaries.Data.csproj" />
+        <ProjectReference Include="..\Data\Code\DatabaseSpecific\Charcillaries.DataDBSpecific.csproj" />
+        <ProjectReference Include="..\SK.Framework\SK.Framework.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EPPlus" Version="7.5.2" />
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="Minio" Version="6.0.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
+        <PackageReference Include="Sqids" Version="3.1.0" />
+        <PackageReference Include="Npgsql" Version="9.0.2" />
+        <PackageReference Include="System.Text.Json" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Resources\**\*.*" />
+    </ItemGroup>
+</Project>

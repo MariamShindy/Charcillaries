@@ -1,0 +1,88 @@
+﻿@page "/passenger/{passengerId}/flights/services/{flightRouteAmenityId}"
+@using System.Globalization
+@using Charcillaries.Core
+@using Charcillaries.Core.Features.Service
+@using Charcillaries.Web.HtmlHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Localization
+@model Charcillaries.Web.Pages.Passenger.Flights.Services.Service
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject IStringLocalizer<ServiceLocalization> LS
+@inject IStringLocalizer<Global> L
+
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @LS["service"];
+
+}
+
+
+<div class="container mt-5 flex-column d-flex align-items-center">
+    @if (Model.selectionStatus == 1)
+    {
+        <div class="alert alert-success text-center" role="alert">
+            @LS["item-purchased"]
+        </div>
+    }
+    else if (Model.selectionStatus == 3 && TempData["SuccessMessage"] == null)
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            @LS["item-in-cart"]
+        </div>
+    }
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successMessage" class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    <h1 class="text-center font-weight-bold">@Model.RouteAmenitiesDetailsView!.Amenity.Name</h1>
+    <p class="text-center">@Model.RouteAmenitiesDetailsView!.Amenity.Description</p>
+    <br/>
+
+    <h3 class="text-center font-weight-bold">
+        @LS["price"]
+        : @Arabic.ConvertToArabicDigitsByCulture(Model.RouteAmenitiesDetailsView!.Price.ToString("N2"), CultureInfo.CurrentCulture.Name) @L["egp"]
+    </h3>
+
+    @if (Model.selectionStatus != 1 && Model.selectionStatus != 3)
+    {
+        <form method="post" class="mt-4 w-75 ">
+            <input type="hidden" asp-for="FlightRouteId"
+                   value="@Hash.EncodeInt(Model.RouteAmenitiesDetailsView!.FlightRouteId)"/>
+            <input type="hidden" asp-for="AmenityId" value="@Hash.EncodeInt(Model.RouteAmenitiesDetailsView!.Id)"/>
+            <div>
+                <label for="customization" class="form-label">@L["customization"]</label>
+                <input type="text" class="form-control" id="customization"
+                       asp-for="PassengerSelectionNewInput.Customization" placeholder="@L["enter-customization"]">
+                <span asp-validation-for="PassengerSelectionNewInput.Customization" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2 button">@L["add-to-cart"]</button>
+        </form>
+    }
+    else
+    {
+        <form method="post" class="mt-4 w-75 ">
+            <input type="hidden" asp-for="FlightRouteId"
+                   value="@Hash.EncodeInt(Model.RouteAmenitiesDetailsView!.FlightRouteId)" />
+            <input type="hidden" asp-for="AmenityId" value="@Hash.EncodeInt(Model.RouteAmenitiesDetailsView!.Id)" />
+            <div>
+                <label for="customization" class="form-label">@L["customization"]</label>
+                <input type="text" class="form-control" id="customization"
+                       asp-for="PassengerSelectionNewInput.Customization" placeholder="@L["enter-customization"]">
+                <span asp-validation-for="PassengerSelectionNewInput.Customization" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2 button" disabled>@L["add-to-cart"]</button>
+        </form>
+    }
+</div>
+<script>
+    setTimeout(function () {
+        var alertBox = document.getElementById("successMessage");
+        if (alertBox) {
+            alertBox.style.display = 'none';
+        }
+    }, 3000); 
+</script>

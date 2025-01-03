@@ -1,0 +1,24 @@
+﻿@page
+@using Charcillaries.Core
+@using Microsoft.Extensions.Localization
+@using Charcillaries.Core.Features.Passenger
+@model Charcillaries.Web.Pages.Passenger.ConfirmationModel
+@inject IStringLocalizer<Global> L
+@inject IStringLocalizer<PassengerLocalization> LP
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_PassengerLayout";
+    ViewData["Title"] = @L["confirmation-page"];
+}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h3 class="text-success">@LP["thank-you"]</h3>
+        <p class="lead">@LP["transaction-success"]</p>
+        <p class="text-muted">@LP["confirmation"]</p>
+        <i class="fas fa-check-circle fa-3x text-success mt-4"></i>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/passenger/flights/upcoming-flights" class="btn blue-button btn-sm">@LP["view-upcoming-flights"]</a>
+    </div>
+</div>
